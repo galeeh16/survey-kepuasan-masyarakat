@@ -49,7 +49,7 @@
             </div>
 
 
-            <div class="mt-5">
+            <div class="mt-5 mb-4">
                 @php 
                     $no = 1;
                 @endphp 
@@ -95,6 +95,13 @@
                     </div>
                 @endfor
             </div>
+
+            <div class="mb-4">
+                <label class="col-form-label">Isi Saran : </label>
+                <textarea name="saran" id="saran"rows="5" class="form-control"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </div>
