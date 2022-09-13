@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css') }}" />
     
     <!-- Aos Animation Css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" /> --}}
     
     <!-- Hope Ui Design System Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/hope-ui.min.css?v=1.2.0') }}" />
@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css?v=1.2.0') }}" />
     
     <!-- Customizer Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css') }}" />   
+    
+    @yield('css')
 </head>
 <body>
     @yield('content')
@@ -33,8 +35,10 @@
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
     
     <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+    {{-- <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script> --}}
 
     <script src="{{ asset('jquery-3.6.1.min.js') }}"></script>
+
+    @yield('script')
 </body>
 
