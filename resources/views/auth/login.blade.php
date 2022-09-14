@@ -31,7 +31,7 @@
         .right {
             flex: 1;
             width: 100%;
-            background: linear-gradient(45deg, #f4bbff, #daecff);
+            background: linear-gradient(45deg, #6179ed, #899af1);
         }
 
     .eye-login {
