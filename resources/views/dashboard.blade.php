@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Rekom Passport</h5>
-                        <h4 class="mb-0 fw-bold text-muted">290</h4>
+                        <h4 class="mb-0 fw-bold text-muted">1.100</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Pelatihan</h5>
-                        <h4 class="mb-0 fw-bold text-muted">100</h4>
+                        <h4 class="mb-0 fw-bold text-muted">90</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">LPK</h5>
-                        <h4 class="mb-0 fw-bold text-muted">10.000</h4>
+                        <h4 class="mb-0 fw-bold text-muted">900</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="d-flex justify-content-end w-100 mb-5">
                         <div class="me-4 px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                             <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Ini :</h5>
-                            <h4 class="mb-0 fw-bold text-muted">16.590</h4>
+                            <h4 class="mb-0 fw-bold text-muted">12.480</h4>
                         </div>
                         <div class="px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                             <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Sebelumnya :</h5>
@@ -157,27 +157,27 @@ $(document).ready(function() {
         series: [
             {
                 name: 'AK1',
-                data: [31, 40, 28, 51, 42, 109, 100]
+                data: [10000, 9000, 9900, 20000, 14000, 10090, 8000]
             }, 
             {
                 name: 'Rekom Passport',
-                data: [11, 32, 45, 32, 34, 52, 41]
+                data: [1100, 3200, 4500, 3020, 3400, 5200, 4100]
             },
             {
                 name: 'Pelatihan',
-                data: [21, 22, 25, 22, 36, 42, 90]
+                data: [9000, 2200, 2500, 2200, 3600, 4200, 9000]
             },
             {
                 name: 'LPK',
-                data: [31, 32, 35, 32, 46, 52, 20]
+                data: [9000, 3200, 3500, 3200, 4600, 5200, 20000]
             },
             {
                 name: 'Pencatatan Perusahaan',
-                data: [51, 52, 55, 62, 56, 12, 10]
+                data: [29000, 5200, 5500, 6200, 5600, 1200, 1000]
             },
             {
                 name: 'Perselisihan Data Industrial',
-                data: [11, 12, 25, 12, 23, 27, 30]
+                data: [10000, 1200, 2500, 1200, 2300, 2700, 3099]
             }
         ],
         chart: {
