@@ -133,7 +133,7 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <div>
-                            <h4 class="fw-bold text-muted">16.590</h4>
+                            <h4 class="fw-bold text-muted">12.480</h4>
                             <div class="text-muted">Total Mengikuti Survey</div>
                         </div>
                         <div class="text-muted">
