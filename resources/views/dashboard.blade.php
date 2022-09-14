@@ -137,7 +137,7 @@
                             <div class="text-muted">Total Mengikuti Survey</div>
                         </div>
                         <div class="text-muted">
-                            13 September 2022
+                            {{ date('d F Y') }}
                         </div>
                     </div>
                     
@@ -157,27 +157,27 @@ $(document).ready(function() {
         series: [
             {
                 name: 'AK1',
-                data: [10000, 9000, 9900, 20000, 14000, 10090, 8000]
+                data: [0, 0, 10000]
             }, 
             {
                 name: 'Rekom Passport',
-                data: [1100, 3200, 4500, 3020, 3400, 5200, 4100]
+                data: [0, 0, 1100]
             },
             {
                 name: 'Pelatihan',
-                data: [9000, 2200, 2500, 2200, 3600, 4200, 9000]
+                data: [0, 0, 90]
             },
             {
                 name: 'LPK',
-                data: [9000, 3200, 3500, 3200, 4600, 5200, 20000]
+                data: [0, 0, 900]
             },
             {
                 name: 'Pencatatan Perusahaan',
-                data: [29000, 5200, 5500, 6200, 5600, 1200, 1000]
+                data: [0, 0, 290]
             },
             {
                 name: 'Perselisihan Hubungan Industrial',
-                data: [10000, 1200, 2500, 1200, 2300, 2700, 3099]
+                data: [0, 0, 100]
             }
         ],
         chart: {
@@ -193,16 +193,16 @@ $(document).ready(function() {
         },
         xaxis: {
             show: false,
-            categories: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul"]
+            categories: ["Jul", "Aug", "Sep"]
         },
         tooltip: {
             x: {
             format: 'dd/MM/yy HH:mm'
             },
         },
-        colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#888'],
+        colors: ['#008FFB', '#00E396', '#FEB019'],
         fill: {
-            colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#888'],
+            colors: ['#008FFB', '#00E396', '#FEB019'],
             gradient: {
                 opacityFrom: 0.6,
                 opacityTo: 0.1
