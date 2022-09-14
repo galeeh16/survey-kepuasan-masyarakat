@@ -176,7 +176,7 @@ $(document).ready(function() {
                 data: [29000, 5200, 5500, 6200, 5600, 1200, 1000]
             },
             {
-                name: 'Perselisihan Data Industrial',
+                name: 'Perselisihan Hubungan Industrial',
                 data: [10000, 1200, 2500, 1200, 2300, 2700, 3099]
             }
         ],

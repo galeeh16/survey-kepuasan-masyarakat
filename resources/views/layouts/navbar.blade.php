@@ -1,10 +1,16 @@
 <!--Nav Start-->
 <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
     <div class="container-fluid navbar-inner">
-      <a href="/" class="navbar-brand">
-        <img src="{{ asset('logobaru.png') }}" style="height: 31px;"/>       
-        <h4 class="logo-title">SKM</h4>
-      </a>
+      @if (isset($show_logo) && $show_logo === 'show')
+        <a href="/" class="navbar-brand d-flex" >
+          <img src="{{ asset('logobaru.png') }}" style="height: 44px;"/>       
+          <div>
+            <h5 class="fw-bold text-dark">SKM</h5>
+            <div style="font-size: 16px;" class="text-muted">Disnakertrans Cianjur</div>
+          </div>
+        </a>
+      @endif
+
       <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
           <i class="icon">
            <svg width="20px" height="20px" viewBox="0 0 24 24">

@@ -1,8 +1,11 @@
 <aside class="sidebar sidebar-default navs-rounded-all ">
     <div class="sidebar-header d-flex align-items-center justify-content-start">
-        <a href="{{ url('/') }}" class="navbar-brand">
-            <img src="{{ asset('logobaru.png') }}" style="height: 31px;"/>          
-            <h4 class="logo-title">SKM</h4>
+        <a href="/" class="navbar-brand d-flex" style="padding: 0.65rem 1rem;">
+            <img src="{{ asset('logobaru.png') }}" style="height: 44px;"/>       
+            <div>
+              <h5 class="fw-bold text-dark">SKM</h5>
+              <div style="font-size: 14px;" class="text-muted">Disnakertrans Cianjur</div>
+            </div>
         </a>
         <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
             <i class="icon">
