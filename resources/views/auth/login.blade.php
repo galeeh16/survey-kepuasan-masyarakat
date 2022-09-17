@@ -98,7 +98,7 @@
     $(document).ready(function() {
         $('#form-login').on('submit', function(e) {
             e.preventDefault();
-            window.location.replace('{{ url('/dashboard') }}')
+            window.location.replace('{{ url('/ak1') }}')
         });
     });
 </script>
