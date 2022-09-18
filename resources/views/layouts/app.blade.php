@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" />
       
       <!-- Hope Ui Design System Css -->
-      <link rel="stylesheet" href="{{ asset('assets/css/mycustom.css?v=1.0.0') }}" />
+      <link rel="stylesheet" href="{{ asset('assets/css/mycustom.css?v=1.0.3') }}" />
       
       <!-- Custom Css -->
       <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css?v=1.2.0') }}" />
@@ -60,26 +60,17 @@
     </main>
     <!-- Wrapper End-->
 
-    <!-- Library Bundle Script -->
     <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
-    
-    <!-- External Library Bundle Script -->
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
-    
-    <!-- App Script -->
     <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <script src="{{ asset('jquery-3.6.1.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('a[href="'+window.location.href+'"]').addClass('active');
+    <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
 
-			if($('a[href="'+window.location.href+'"]').parents('ul.ml-menu').length > 0) {
-				$('a[href="'+window.location.href+'"]').parents('.ml-menu').css('display', 'block');
-				$('li.active').parent().siblings('.menu-toggle').addClass('toggled');
-			}
-        });
-    </script>
+	{{-- <script src="{{ asset('assets/js/jquery-validation/jquery-validate.min.js') }}"></script> --}}
+	{{-- <script src="{{ asset('assets/js/jquery-validation/additional-methods.js') }}"></script> --}}
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
     @yield('script')
   </body>

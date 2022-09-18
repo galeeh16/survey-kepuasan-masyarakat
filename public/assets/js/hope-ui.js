@@ -385,7 +385,7 @@ Array.from(sidebarToggleBtn, (sidebarBtn) => {
 Back To Top
 --------------------------*/
 const backToTop = document.getElementById("back-to-top")
-console.log(backToTop)
+// console.log(backToTop)
 if( backToTop !== null && backToTop !== undefined ) {
   document.getElementById("back-to-top").classList.add("animate__animated","animate__fadeOut")
   window.addEventListener('scroll', (e) => {

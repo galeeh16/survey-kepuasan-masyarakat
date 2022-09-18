@@ -54,10 +54,14 @@
             <div class="login">
                 <h2 class="mb-5 fw-semibold">Login to App</h2>
 
+                <div id="error-msg">
+                    
+                </div>
+
                 <form method="post" id="form-login" spellcheck="false">
                     <div class="mb-4">
-                        <label for="email" class="fw-semibold mb-1">Email</label>
-                        <input type="text" name="email" class="form-control px-3 py-2" maxlength="70" tabindex="1" />
+                        <label for="username" class="fw-semibold mb-1">Username</label>
+                        <input type="text" name="username" id="username" class="form-control px-3 py-2" maxlength="70" tabindex="1" required />
                     </div>
                     <div class="mb-5">
                         <div class="d-flex justify-content-between">
@@ -65,7 +69,7 @@
                             <a href="/forgot-password" class="text-decoration-none" tabindex="3" style="font-size: 14px;">Forgot Password</a>
                         </div>
                         <div class="position-relative">
-                            <input type="password" name="password" tabindex="2" class="form-control px-3 py-2 pe-5" maxlength="40" />
+                            <input type="password" name="password" id="password" tabindex="2" class="form-control px-3 py-2 pe-5" maxlength="40" required />
                         </div>
                     </div>
                     <div class="mb-4">
@@ -98,7 +102,30 @@
     $(document).ready(function() {
         $('#form-login').on('submit', function(e) {
             e.preventDefault();
-            window.location.replace('{{ url('/ak1') }}')
+            
+            $.ajax({
+                url: "{{ url('/auth/login') }}",
+                type: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                },
+                success: function(response) {
+                    $('#error-msg').html('');
+                    window.location.href = "{{ url('/admin/dashboard') }}";
+                },
+                error: function(xhr, stat, err) {
+                    if (xhr.status == 401) {
+                        $('#error-msg').html(`<div class="alert alert-danger">
+                            ${xhr.responseJSON.message}
+                        </div>`);
+                    }
+                }
+            });
+
         });
     });
 </script>

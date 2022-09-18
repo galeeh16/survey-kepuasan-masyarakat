@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_layanan');
             $table->unsignedBigInteger('id_pertanyaan');
             $table->unsignedBigInteger('id_jawaban');
-            $table->unsignedBigInteger('penilaian');
-            $table->datetime('tanggalsurvey');
+            $table->unsignedBigInteger('penilaian')->nullable();
+            $table->datetime('tanggalsurvey')->nullable();
 
         });
     }

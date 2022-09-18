@@ -19,7 +19,7 @@
           </i>
       </div>
    
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
             <span class="mt-2 navbar-toggler-bar bar1"></span>
             <span class="navbar-toggler-bar bar2"></span>
@@ -27,32 +27,22 @@
           </span>
       </button>
 
-      {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="../assets/images/avatars/01.png" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
-              <div class="caption ms-3 d-none d-md-block ">
-                  <h6 class="mb-0 caption-title">Austin Robertson</h6>
-                  <p class="mb-0 caption-sub-title">Marketing Administrator</p>
-              </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="../dashboard/app/user-profile.html">Profile</a></li>
-              <li><a class="dropdown-item" href="../dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="../dashboard/auth/sign-in.html">Logout</a></li>
-            </ul>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav d-flex justify-content-end me-xl-4" style="flex: 1;">
+          <li class="nav-item">
+            <a class="nav-link" href="#layanan">Layanan</a>
           </li>
         </ul>
-      </div> --}}
 
-      <div class="navbar-nav ms-auto align-items-center navbar-list" style="height: 50px;">
+        <div class="navbar-nav ms-auto align-items-center navbar-list" style="height: 50px;">
+          <a href="{{ url('login') }}" class="btn btn-primary">                           
+            Login
+          </a>
+        </div>
         
-        <a href="{{ url('login') }}" class="btn btn-primary">                           
-          Login
-        </a>
       </div>
+     
     </div>
 
   </nav>          
+  {{-- Nav End --}}

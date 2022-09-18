@@ -34,22 +34,37 @@
     <div class="modal fade" id="modal-isi-survey" aria-labelledby="modal-isi-survey" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header p-4">
-                    <h5 class="mb-0 modal-title">Ajukan</h5>
+                <div class="modal-header px-4">
+                    <h5 class="mb-0 modal-title">Isi Data</h5>
                 </div>
                 <div class="modal-body p-4">
-                    <form method="post" id="form-isi-survey">
-                        <div class="mb-4">
-                            <label for="" class="">Nama</label>
-                            <input type="text" class="form-control" value="Contoh Nama">
+                    <form method="post" id="form-isi-data" spellcheck="false">
+                        <div class="mb-3">
+                            <label class="col-form-label">Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" placeholder="Masukkan Nama Lengkap" maxlength="50">
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="">Alamat</label>
-                            <input type="text" class="form-control" value="Contoh alamat">
+                        <div class="mb-3">
+                            <label class="col-form-label">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control form-select">
+                                <option value="1">Laki - Laki</option>
+                                <option value="2">Perempuan</option>
+                            </select>
                         </div>
-                        <div class="mb-4">
-                            <label for="" class="">No. HP</label>
-                            <input type="text" class="form-control" value="08320183028">
+                        <div class="mb-3">
+                            <label class="col-form-label">NIK</label>
+                            <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan NIK" maxlength="16">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">No. HP</label>
+                            <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Nomor Handphone" maxlength="16">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Pendidikan</label>
+                            <input type="text" name="pendidikan" id="pendidikan" class="form-control" placeholder="Masukkan Pendidikan" maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Pekerjaan</label>
+                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control" placeholder="Masukkan Pekerjaan" maxlength="50">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-danger me-3" data-bs-dismiss="modal">Batal</button>
@@ -67,23 +82,62 @@
     $(document).ready(function() {
         const modal = new bootstrap.Modal('#modal-isi-survey');
 
-        $('#form-isi-survey').on('submit', function(e) {
-            e.preventDefault();
+        // $('#form-isi-survey').on('submit', function(e) {
+        //     e.preventDefault();
 
-            modal.hide();
+        //     modal.hide();
 
-            $("#survey-question").prop('hidden', false);
-            $('#btn-isi-survey').hide();
+        //     $("#survey-question").prop('hidden', false);
+        //     $('#btn-isi-survey').hide();
 
-            // let nilaiKepuasan = $(`[name="nilai_kepuasan"]:checked`).val();
-            // console.log(nilaiKepuasan)
+        //     // let nilaiKepuasan = $(`[name="nilai_kepuasan"]:checked`).val();
+        //     // console.log(nilaiKepuasan)
 
-        });  
+        // });  
         
         $('input[type=radio][name=nilai_kepuasan]').change(function() {
             $('div.nilai-div').removeClass('bg-primary text-white')
             $(this).parent('div').addClass('bg-primary text-white');
         });
+
+        $("#form-isi-data").validate({
+            submitHandler: function(form) {
+                modal.hide();
+                $('#btn-isi-survey').hide();
+                $("#survey-question").prop('hidden', false);
+            },
+            rules: {
+                nama_lengkap: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                jenis_kelamin: {
+                    required: true 
+                },
+                nik: {
+                    required: true,
+                    digits: true,
+                    minlength: 16,
+                    maxlength: 16
+                },
+                no_hp: {
+                    required: true,
+                    digits: true,
+                    minlength: 11,
+                    maxlength: 16
+                },
+                pendidikan: {
+                    required: true,
+                    maxlength: 100 
+                },
+                pekerjaan: {
+                    required: true,
+                    maxlength: 50
+                }
+            }
+        });
+
     });
 </script>
 @endsection

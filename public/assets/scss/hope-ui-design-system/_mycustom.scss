@@ -1,0 +1,41 @@
+.col-form-label {
+    padding-bottom: 2px;
+}
+
+label.error {
+    margin-top: 2px;
+    color: $danger;
+}
+
+table.table tbody tr td {
+    padding: 0.5rem 1rem;
+}
+table.table thead tr th {
+    text-transform: none;
+}
+
+.dataTables_length {
+    margin-bottom: 1rem;
+}
+.dataTables_paginate {
+    margin-top: 1rem !important;
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.swal2-styled.swal2-confirm {
+    background: $primary !important;
+}
+
+.swal2-styled.swal2-cancel {
+    background-color: rgba(58, 87, 232, 0.2) !important;
+    color: $primary !important;
+}
