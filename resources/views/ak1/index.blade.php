@@ -14,6 +14,9 @@
     .nilai > .nilai-div:hover {
         background-color: #e7ebfc; 
     }
+    label.error {
+        font-weight: 500;
+    }
 </style>
 @endsection
 
@@ -100,6 +103,36 @@
             $(this).parent('div').addClass('bg-primary text-white');
         });
 
+        $.validator.setDefaults({
+            debug: true,
+            ignore: [],
+            highlight: function(element) {
+                $(element).closest('.form-control').addClass('is-invalid');
+                $(element).siblings('.select2-container').find('.select2-selection').addClass('is-invalid');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-control').removeClass('is-invalid');
+                $(element).siblings('.select2-container').find('.select2-selection').removeClass('is-invalid');
+            },
+            errorPlacement: function(error, element) {
+                // if (element.hasClass('select-dua') || element.hasClass('select2-without-search')) {
+                //     error.insertAfter(element.siblings('.select2'));
+                // } 
+
+                if (element[0].name== 'nilai_kepuasan') {
+                    error.insertAfter(element.parents('.d-flex.nilai'));
+                } else if (element.hasClass('answer')) {
+                    error.insertAfter(element.parents('.soal'));
+                } else {
+                    error.insertAfter(element);   
+                }
+                // console.log(element)
+            }
+        });
+
+        $('#btn-isi-survey').hide();
+                $("#survey-question").prop('hidden', false);
+
         $("#form-isi-data").validate({
             submitHandler: function(form) {
                 modal.hide();
@@ -135,8 +168,35 @@
                     required: true,
                     maxlength: 50
                 }
+            },
+        });
+
+        $('#form-isi-survey').validate({
+            submitHandler: function(form) {
+                console.log('sdsusdadsadsa');
+            },
+            rules: {
+                nilai_kepuasan: {
+                    required: true
+                },
+            },
+            messages: {
+                nilai_kepuasan: {
+                    required: 'Harap isi nilai kepuasan.'
+                },
+                
             }
         });
+
+        $('[name^="answers"]').each(function() {
+            $(this).rules('add', {
+                required: true,
+                messages: {
+                    required: "Harap pilih jawaban.",
+                }
+            });
+        });
+
 
     });
 </script>
