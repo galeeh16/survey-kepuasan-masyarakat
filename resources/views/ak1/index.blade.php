@@ -26,7 +26,7 @@
             <h4 class="mb-0 card-title">AK1</h4>
         </div>
         <div class="card-body">
-            <button type="button" class="btn btn-primary mb-0" data-bs-toggle="modal" id="btn-isi-survey" data-bs-target="#modal-isi-survey">Isi Survey</button>
+            <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" id="btn-isi-survey" data-bs-target="#modal-isi-survey">Isi Survey</button>
             
             {{-- Survey Question --}}
             @include('ak1.survey-question')

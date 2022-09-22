@@ -25,6 +25,10 @@
 
       <link rel="stylesheet" href="{{ asset('assets/js/DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/js/sweetalert/sweetalert2.min.css') }}">
+      {{-- <link rel="stylesheet" href="{{ asset('assets/js/select2/select2.min.css') }}"> --}}
+      {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+
+      <link rel="stylesheet" href="{{ asset('assets/js/sweetalert/sweetalert2.min.css') }}">
       <style>
         html, body {
             color: #2f3036;
@@ -87,21 +91,26 @@
     </main>
     <!-- Wrapper End-->
 
+    @yield('modal')
+
     <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
     <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
     <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <script src="{{ asset('jquery-3.6.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
 
+    <script src="{{ asset('assets/js/sweetalert/sweetalert2@11.js') }}"></script>
+    
 	{{-- <script src="{{ asset('assets/js/jquery-validation/jquery-validate.min.js') }}"></script> --}}
 	{{-- <script src="{{ asset('assets/js/jquery-validation/additional-methods.js') }}"></script> --}}
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-
+    
     <script src="{{ asset('assets/js/DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert/sweetalert2@11.js') }}"></script>
+    <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/select2/select2.min.js') }}"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 
     @yield('script')
   </body>

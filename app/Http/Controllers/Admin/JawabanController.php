@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Contracts\JawabanContract;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class JawabanController extends Controller
@@ -32,4 +33,5 @@ class JawabanController extends Controller
 
         return response()->json($json_data, 200); 
     }
+
 }

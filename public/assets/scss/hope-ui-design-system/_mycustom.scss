@@ -39,3 +39,21 @@ table.table thead tr th {
     background-color: rgba(58, 87, 232, 0.2) !important;
     color: $primary !important;
 }
+
+// select 2 
+.select2 {
+    width: 100% !important;
+    
+    .select2-selection.select2-selection--single {
+        height: 42px !important;
+
+        .select2-selection__rendered {
+            padding: 0.5rem 1rem !important;
+        }
+
+        .select2-selection__arrow {
+            top: 6px;
+            right: 6px;
+        }
+    }
+}

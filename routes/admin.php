@@ -21,10 +21,15 @@ Route::group(['prefix' => 'layanan'], function () {
 
 Route::group(['prefix' => 'pertanyaan'], function () {
     Route::get('/', [PertanyaanController::class, 'index']);
+    Route::get('/{id}', [PertanyaanController::class, 'show']);
+    Route::post('/', [PertanyaanController::class, 'store']);
+    Route::put('/{id}', [PertanyaanController::class, 'update']); 
     Route::post('/get-list', [PertanyaanController::class, 'getList']);
+    Route::delete('/{id}', [PertanyaanController::class, 'destroy']);
 });
 
 Route::group(['prefix' => 'jawaban'], function () {
     Route::get('/', [JawabanController::class, 'index']);
     Route::post('/get-list', [JawabanController::class, 'getList']);
+    
 });
