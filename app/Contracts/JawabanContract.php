@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
-interface PertanyaanContract 
+interface JawabanContract 
 {
-    public function getAllPertanyaan(); // tanpa pagination
-
     public function getListPagination();
 }

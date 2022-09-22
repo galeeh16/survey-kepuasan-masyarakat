@@ -13,4 +13,12 @@ final class PertanyaanService implements PertanyaanContract
     {
         return Pertanyaan::with('answers')->get();
     }
+
+    public function getListPagination()
+    {
+        $search = request()->get('search') ? strtolower(request()->get('search')) : null;
+        $limit = request()->input('length') ? request()->input('length') : 0;
+
+        return Pertanyaan::paginate($limit)->toArray();
+    }
 }

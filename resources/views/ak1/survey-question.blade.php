@@ -2,11 +2,11 @@
     <form method="post" id="form-isi-survey">
         <div class="row">
             <div class="col-12">
-                <div class="mb-3">Seberapa puas dengan pelayanan kami?</div>
+                {{-- <div class="mb-3">Seberapa puas dengan pelayanan kami?</div>
 
-                <div class="mb-2">Nilai</div>
+                <div class="mb-2">Nilai</div> --}}
 
-                <div class="d-flex nilai">
+                {{-- <div class="d-flex nilai">
                     <div class="nilai-div">
                         <input type="radio" id="nilai1" name="nilai_kepuasan" value="1" style="display: none;">
                         <label for="nilai1" data-value="1">1</label>
@@ -47,7 +47,7 @@
                         <input type="radio" id="nilai10" name="nilai_kepuasan" value="10" style="display: none;">
                         <label for="nilai10" data-value="10">10</label>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div class="mt-5 mb-4">
@@ -71,10 +71,10 @@
                     @endforeach
                 </div>
 
-                <div class="mb-4">
+                {{-- <div class="mb-4">
                     <label class="col-form-label">Isi Saran : </label>
                     <textarea name="saran" id="saran"rows="5" class="form-control"></textarea>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

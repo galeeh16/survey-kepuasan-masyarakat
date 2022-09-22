@@ -1,8 +1,8 @@
 <aside class="sidebar sidebar-default navs-rounded-all ">
     <div class="sidebar-header d-flex align-items-center justify-content-start">
-        <a href="/" class="navbar-brand d-flex" style="padding: 0.65rem 1rem;">
+        <a href="/" class="navbar-brand d-flex" style="padding: 0.65rem 1rem 0.65rem 0;">
             <img src="{{ asset('logobaru.png') }}" style="height: 44px;"/>       
-            <div>
+            <div class="logo-title">
               <h5 class="fw-bold text-dark">SKM</h5>
               <div style="font-size: 14px;" class="text-muted">Disnakertrans Cianjur</div>
             </div>
