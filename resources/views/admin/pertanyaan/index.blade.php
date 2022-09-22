@@ -96,6 +96,10 @@
                 $('#id_pertanyaan_edit').val(id);
 
                 $('[name^="edit_jawaban"]').each(function() {
+                    $(this).prop('checked', false);
+                });
+
+                $('[name^="edit_jawaban"]').each(function() {
                     let value = parseInt($(this).val());
                     if (response.jawaban.includes(value)) {
                         $(this).prop('checked', true);
