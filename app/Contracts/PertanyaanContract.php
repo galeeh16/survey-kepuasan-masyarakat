@@ -10,13 +10,13 @@ interface PertanyaanContract
 
     public function getListPagination();
 
-    public function insertDataPertanyaan(string $pertanyaan, array $jawaban);
+    public function insertDataPertanyaan(string $pertanyaan, array $jawaban, $unsur, $no_urut);
 
     public function getPertanyaanById($id);
 
     public function getPertanyaanJawaban($id);
 
-    public function updatePertanyaanById($pertanyaan_id, $pertanyaan);
+    public function updatePertanyaanById($pertanyaan_id, $pertanyaan, $unsur, $no_urut);
 
     public function updateJawaban($pertanyaan_id, array $jawabans);
 

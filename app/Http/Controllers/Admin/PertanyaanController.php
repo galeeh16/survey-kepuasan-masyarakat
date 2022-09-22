@@ -44,7 +44,7 @@ class PertanyaanController extends Controller
         DB::beginTransaction();
         
         try {
-            $this->service->insertDataPertanyaan($request->pertanyaan, $request->jawaban);
+            $this->service->insertDataPertanyaan($request->pertanyaan, $request->jawaban, $request->unsur, $request->no_urut);
             DB::commit();
 
             return response()->success(message: 'Berhasil menambah pertanyaan', status: 201);
@@ -70,7 +70,7 @@ class PertanyaanController extends Controller
         DB::beginTransaction();
 
         try {
-            $update = $this->service->updatePertanyaanById($id, $request->pertanyaan_edit);
+            $update = $this->service->updatePertanyaanById($id, $request->pertanyaan_edit, $request->unsur_edit, $request->no_urut_edit);
 
             $update_jawaban = $this->service->updateJawaban($id, $request->edit_jawaban);
 
@@ -89,7 +89,7 @@ class PertanyaanController extends Controller
 
         try {
             $this->service->deletePertanyaanById($id);
-            
+
             $this->service->deletePertanyaanJawaban($id);
 
             DB::commit();

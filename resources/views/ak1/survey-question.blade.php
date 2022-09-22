@@ -51,12 +51,9 @@
 
 
                 <div class="mt-5 mb-4">
-                    @php 
-                        $no = 1;
-                    @endphp 
                     @foreach($questions as $q => $question)
                         <div class="mb-4">
-                            <div>{{ $loop->iteration }}. {{ $question->pertanyaan }}</div>
+                            <div>{{ $question->no_urut }}. {{ $question->pertanyaan }}</div>
                             <div class="mt-2 soal">
                                 @foreach ($question->answers as $a => $answer)
                                     <div class="form-check mb-2">

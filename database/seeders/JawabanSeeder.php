@@ -15,15 +15,15 @@ class JawabanSeeder extends Seeder
     public function run()
     {
         DB::table('tbl_jawaban')->insert([
-            ['jawaban' => 'Tidak Sesuai ', 'kode' => 'A'],
-            ['jawaban' => 'Kurang Sesuai', 'kode' => 'B'],
-            ['jawaban' => 'Sesuai ', 'kode' => 'C'],
-            ['jawaban' => 'Sangat Sesuai', 'kode' => 'D'],
+            ['jawaban' => 'Tidak Sesuai ', 'kode' => 'A', 'nilai' => 1],
+            ['jawaban' => 'Kurang Sesuai', 'kode' => 'B', 'nilai' => 2],
+            ['jawaban' => 'Sesuai ', 'kode' => 'C', 'nilai' => 3],
+            ['jawaban' => 'Sangat Sesuai', 'kode' => 'D', 'nilai' => 4],
 
-            ['jawaban' => 'Tidak Mudah', 'kode' => 'A'],
-            ['jawaban' => 'Kurang Mudah', 'kode' => 'B'],
-            ['jawaban' => 'Mudah', 'kode' => 'C'],
-            ['jawaban' => 'Sangat Mudah', 'kode' => 'D'],
+            ['jawaban' => 'Tidak Mudah', 'kode' => 'A', 'nilai' => 1],
+            ['jawaban' => 'Kurang Mudah', 'kode' => 'B', 'nilai' => 2],
+            ['jawaban' => 'Mudah', 'kode' => 'C', 'nilai' => 3],
+            ['jawaban' => 'Sangat Mudah', 'kode' => 'D', 'nilai' => 4],
 
             // ['jawaban' => 'Tidak Cepat', 'kode' => 'A'],
             // ['jawaban' => 'Kurang Cepat', 'kode' => 'B'],

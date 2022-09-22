@@ -24,6 +24,8 @@
                 <thead>
                     <tr>
                         <th class="text-nowrap text-center" style="width: 50px;">No</th>
+                        <th class="text-nowrap text-center">Unsur</th>
+                        <th class="text-nowrap text-center">No. Urut</th>
                         <th class="text-nowrap text-center">Pertanyaan</th>
                         <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                     </tr>
@@ -93,6 +95,8 @@
             success: function(response) {
                 swal.close();
                 $('#pertanyaan_edit').val(response.pertanyaan.pertanyaan);
+                $('#unsur_edit').val(response.pertanyaan.unsur);
+                $('#no_urut_edit').val(response.pertanyaan.no_urut);
                 $('#id_pertanyaan_edit').val(id);
 
                 $('[name^="edit_jawaban"]').each(function() {
@@ -173,6 +177,7 @@
             processing: true,
             serverSide: true,
             destroy: true,
+            ordering: false,
             searching: false,
             deferRender: true,
             scrollX: true,
@@ -192,6 +197,8 @@
                 {"data": "no", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
 	                    return meta.row + meta.settings._iDisplayStart + 1;
                 }},
+                {data: 'unsur', class: 'text-nowrap'},
+                {data: 'no_urut', class: 'text-nowrap'},
                 {data: 'pertanyaan', class: 'text-nowrap'},
                 {"data": "action", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
                     return `
@@ -250,12 +257,26 @@
                 addPertanyaan();
             },
             rules: {
+                no_urut: {
+                    required: true,
+                    maxlength: 22
+                },
+                unsur: {
+                    required: true,
+                    maxlength: 22
+                },
                 pertanyaan: {
                     required: true,
                     maxlength: 255
                 },
             },
             messages: {
+                no_urut: {
+                    required: 'Harap isi nomor urut',
+                },
+                unsur: {
+                    required: 'Harap isi unsur'
+                },
                 pertanyaan: {
                     required: 'Harap isi pertanyaan.',
                     maxlength: 'Maksimal length 255.'
@@ -283,12 +304,26 @@
                 updatePertanyaan();
             },
             rules: {
+                no_urut_edit: {
+                    required: true,
+                    maxlength: 22
+                },
+                unsur_edit: {
+                    required: true,
+                    maxlength: 22
+                },
                 pertanyaan_edit: {
                     required: true,
                     maxlength: 255
                 },
             },
             messages: {
+                no_urut_edit: {
+                    required: 'Harap isi nomor urut',
+                },
+                unsur_edit: {
+                    required: 'Harap isi unsur'
+                },
                 pertanyaan_edit: {
                     required: 'Harap isi pertanyaan.',
                     maxlength: 'Maksimal length 255.'

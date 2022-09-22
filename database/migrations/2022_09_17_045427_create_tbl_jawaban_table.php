@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tbl_jawaban', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
+            $table->integer('nilai');
             $table->string('jawaban');
         });
     }

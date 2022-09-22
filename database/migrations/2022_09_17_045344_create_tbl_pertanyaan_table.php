@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('tbl_pertanyaan', function (Blueprint $table) {
             $table->id();
+            $table->integer('no_urut');
             $table->string('pertanyaan');
+            $table->string('unsur')->nullable();
         });
     }
 

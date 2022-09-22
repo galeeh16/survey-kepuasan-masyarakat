@@ -8,6 +8,14 @@
             <div class="modal-body px-4">
                 <form method="post" id="form-add-pertanyaan" spellcheck="false">
                     <div class="mb-3">
+                        <label class="col-form-label" style="font-weight: 600;">No. urut <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="no_urut" id="no_urut">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" style="font-weight: 600;">Unsur <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="unsur" id="unsur">
+                    </div>
+                    <div class="mb-3">
                         <label class="col-form-label" style="font-weight: 600;">Pertanyaan <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="pertanyaan" name="pertanyaan" placeholder="Masukkan Pertanyaan" rows="4" style="resize: none;"></textarea>
                     </div>

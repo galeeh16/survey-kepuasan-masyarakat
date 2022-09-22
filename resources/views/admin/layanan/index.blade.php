@@ -43,6 +43,7 @@
             processing: true,
             serverSide: true,
             destroy: true,
+            ordering: false,
             searching: false,
             deferRender: true,
             scrollX: true,

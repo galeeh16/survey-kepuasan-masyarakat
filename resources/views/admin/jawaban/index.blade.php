@@ -10,7 +10,7 @@
             <h5 class="mb-0">Management Jawaban</h5>
         </div>
         <div class="card-body">
-            <button type="button" class="btn btn-primary mb-4">Tambah Jawaban</button>
+            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#modal-add-jawaban">Tambah Jawaban</button>
 
             <table id="table" class="table table-bordered table-hover" style="width: 100%;">
                 <thead>
@@ -18,6 +18,7 @@
                         <th class="text-nowrap text-center" style="width: 50px;">No</th>
                         <th class="text-nowrap text-center">Kode</th>
                         <th class="text-nowrap text-center">Jawaban</th>
+                        <th class="text-nowrap text-center">Nilai</th>
                         <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
@@ -30,17 +31,23 @@
     </div>
 @endsection
 
+@section('modal')
+    @include('admin.jawaban.modal-add')
+    @include('admin.jawaban.modal-edit')
+@endsection
+
 @section('script')
 <script>
     var table;
-    // const modalAddLayanan = new bootstrap.Modal('#modal-add-layanan');
-    // const modalEditLayanan = new bootstrap.Modal('#modal-edit-layanan');
+    const modalAddLayanan = new bootstrap.Modal('#modal-add-jawaban');
+    const modalEditJawaban = new bootstrap.Modal('#modal-edit-jawaban');
 
     function fetchData() {
         table = $('#table').DataTable({
             processing: true,
             serverSide: true,
             destroy: true,
+            ordering: false,
             searching: false,
             deferRender: true,
             scrollX: true,
@@ -62,6 +69,7 @@
                 }},
                 {data: 'kode', class: 'text-nowrap'},
                 {data: 'jawaban', class: 'text-nowrap'},
+                {data: 'nilai', class: 'text-nowrap'},
                 {"data": "action", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
                     return `
                         <div class="d-flex justify-content-center">
