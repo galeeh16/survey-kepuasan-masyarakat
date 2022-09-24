@@ -23,6 +23,8 @@
       <!-- Customizer Css -->
       <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css') }}" />
 
+      <link rel="stylesheet" href="{{ asset('assets/js/sweetalert/sweetalert2.min.css') }}">
+
       <style>
         html, body {
             color: #2f3036;
@@ -66,6 +68,8 @@
 
     <script src="{{ asset('jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
+
+    <script src="{{ asset('assets/js/sweetalert/sweetalert2@11.js') }}"></script>
 
 	{{-- <script src="{{ asset('assets/js/jquery-validation/jquery-validate.min.js') }}"></script> --}}
 	{{-- <script src="{{ asset('assets/js/jquery-validation/additional-methods.js') }}"></script> --}}

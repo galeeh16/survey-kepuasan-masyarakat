@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('tbl_responden', function (Blueprint $table) {
             $table->id();
             $table->string('nama_responden');
-            $table->string('usia');
-            $table->string('jenis_kelamin');
-            $table->string('pendidikan');
-            $table->string('pekerjaan');
-            $table->string('no_hp');
-            $table->string('nik');
+            $table->string('usia')->nullable();
+            $table->string('jenis_kelamin')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('nik')->nullable();
             $table->datetime('created_at')->useCurrent();
         });
     }

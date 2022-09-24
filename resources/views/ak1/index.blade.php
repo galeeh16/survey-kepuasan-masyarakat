@@ -39,6 +39,7 @@
             <div class="modal-content">
                 <div class="modal-header px-4">
                     <h5 class="mb-0 modal-title">Isi Data</h5>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" data-bs-target="#modal-isi-survey"></button>
                 </div>
                 <div class="modal-body p-4">
                     <form method="post" id="form-isi-data" spellcheck="false">
@@ -76,8 +77,8 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-3" data-bs-dismiss="modal">Batal</button>
+                        <div class="d-flex justify-content-end mt-2">
+                            <button type="button" class="btn btn-danger me-3" data-bs-dismiss="modal" data-bs-target="#modal-isi-survey">Batal</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
@@ -89,6 +90,36 @@
 
 @section('script')
 <script>
+    function addKuesioner() {
+        let respondenData = $('#form-isi-data').serialize();
+        let kuesionerData = $('#form-isi-survey').serialize();
+        
+        $.ajax({
+            url: "{{ url('ak1/add-kuesioner') }}",
+            type: 'post',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            beforeSend: function() {
+                showLoading();
+            },
+            data: respondenData + '&' + kuesionerData,
+            success: function(response) {
+                alertSuccess(response.message);
+                $('#form-isi-data')[0].reset();
+                $('#form-isi-survey')[0].reset();
+                $("#survey-question").prop('hidden', true);
+                $('#btn-isi-survey').show();
+            },
+            error: function(xhr, stat, err) {
+                swal.close();
+                if (xhr.status == 500) {
+                    alertError(); 
+                }
+            }
+        });
+    }
+
     $(document).ready(function() {
         const modal = new bootstrap.Modal('#modal-isi-survey');
 
@@ -210,19 +241,8 @@
 
         $('#form-isi-survey').validate({
             submitHandler: function(form) {
-                console.log('sdsusdadsadsa');
+                addKuesioner();
             },
-            rules: {
-                nilai_kepuasan: {
-                    required: true
-                },
-            },
-            messages: {
-                nilai_kepuasan: {
-                    required: 'Harap isi nilai kepuasan.'
-                },
-                
-            }
         });
 
         $('[name^="answers"]').each(function() {

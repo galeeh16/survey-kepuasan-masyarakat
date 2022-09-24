@@ -14,8 +14,12 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(\App\Contracts\LayananContract::class, \App\Services\LayananService::class);
+
         $this->app->singleton(\App\Contracts\PertanyaanContract::class, \App\Services\PertanyaanService::class);
+
         $this->app->singleton(\App\Contracts\JawabanContract::class, \App\Services\JawabanService::class);
+
+        $this->app->singleton(\App\Contracts\KuesionerContract::class, \App\Services\KuesionerService::class);
     }
 
     /**

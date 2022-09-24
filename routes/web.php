@@ -13,3 +13,4 @@ Route::get('/', function () {
 });
 
 Route::get('/ak1', [AK1Controller::class, 'index']);
+Route::post('/ak1/add-kuesioner', [AK1Controller::class, 'store']);
