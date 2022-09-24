@@ -20,10 +20,10 @@ class JawabanSeeder extends Seeder
             ['jawaban' => 'Sesuai ', 'kode' => 'C', 'nilai' => 3],
             ['jawaban' => 'Sangat Sesuai', 'kode' => 'D', 'nilai' => 4],
 
-            ['jawaban' => 'Tidak Mudah', 'kode' => 'A', 'nilai' => 1],
-            ['jawaban' => 'Kurang Mudah', 'kode' => 'B', 'nilai' => 2],
-            ['jawaban' => 'Mudah', 'kode' => 'C', 'nilai' => 3],
-            ['jawaban' => 'Sangat Mudah', 'kode' => 'D', 'nilai' => 4],
+            // ['jawaban' => 'Tidak Mudah', 'kode' => 'A', 'nilai' => 1],
+            // ['jawaban' => 'Kurang Mudah', 'kode' => 'B', 'nilai' => 2],
+            // ['jawaban' => 'Mudah', 'kode' => 'C', 'nilai' => 3],
+            // ['jawaban' => 'Sangat Mudah', 'kode' => 'D', 'nilai' => 4],
 
             // ['jawaban' => 'Tidak Cepat', 'kode' => 'A'],
             // ['jawaban' => 'Kurang Cepat', 'kode' => 'B'],

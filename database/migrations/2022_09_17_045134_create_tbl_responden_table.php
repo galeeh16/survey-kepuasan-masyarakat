@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('tbl_responden', function (Blueprint $table) {
             $table->id();
-            $table->string('namaresponden');
+            $table->string('nama_responden');
             $table->string('usia');
-            $table->string('jeniskelamin');
+            $table->string('jenis_kelamin');
             $table->string('pendidikan');
             $table->string('pekerjaan');
-            $table->string('nohp');
+            $table->string('no_hp');
             $table->string('nik');
+            $table->datetime('created_at')->useCurrent();
         });
     }
 

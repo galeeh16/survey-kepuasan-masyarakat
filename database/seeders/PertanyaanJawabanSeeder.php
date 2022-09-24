@@ -34,19 +34,19 @@ class PertanyaanJawabanSeeder extends Seeder
             // 2
             [
                 'pertanyaan_id' => 2,
-                'jawaban_id' => 5
+                'jawaban_id' => 1
             ],
             [
                 'pertanyaan_id' => 2,
-                'jawaban_id' => 6
+                'jawaban_id' => 2
             ],
             [
                 'pertanyaan_id' => 2,
-                'jawaban_id' => 7
+                'jawaban_id' => 3
             ],
             [
                 'pertanyaan_id' => 2,
-                'jawaban_id' => 8
+                'jawaban_id' => 4
             ],
             // 3
             [

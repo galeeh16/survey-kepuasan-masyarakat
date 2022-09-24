@@ -57,8 +57,8 @@
                             <div class="mt-2 soal">
                                 @foreach ($question->answers as $a => $answer)
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input answer" type="radio" name="answers[{{$question->id}}]" id="answer{{$answer->id}}" value="{{$answer->id}}">
-                                        <label class="form-check-label" for="answer{{$answer->id}}">
+                                        <input class="form-check-input answer" type="radio" name="answers[{{$question->id}}]" id="answer{{$answer->id}}{{$question->id}}" value="{{$answer->id}}">
+                                        <label class="form-check-label" for="answer{{$answer->id}}{{$question->id}}">
                                             {{ $answer->kode }}. {{ $answer->jawaban }}
                                         </label>
                                     </div>
