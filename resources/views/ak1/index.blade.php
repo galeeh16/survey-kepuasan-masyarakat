@@ -153,10 +153,6 @@
                 $(element).siblings('.select2-container').find('.select2-selection').removeClass('is-invalid');
             },
             errorPlacement: function(error, element) {
-                // if (element.hasClass('select-dua') || element.hasClass('select2-without-search')) {
-                //     error.insertAfter(element.siblings('.select2'));
-                // } 
-
                 if (element[0].name== 'nilai_kepuasan') {
                     error.insertAfter(element.parents('.d-flex.nilai'));
                 } else if (element.hasClass('answer')) {
@@ -164,12 +160,8 @@
                 } else {
                     error.insertAfter(element);   
                 }
-                // console.log(element)
             }
         });
-
-        // $('#btn-isi-survey').hide();
-        //         $("#survey-question").prop('hidden', false);
 
         $("#form-isi-data").validate({
             submitHandler: function(form) {
