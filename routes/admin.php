@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\PertanyaanController;
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+// Route::resource('layanan', LayananController::class); // lebih suka pake yg bawah karena lebih jelas aja huehe
+
 Route::group(['prefix' => 'layanan'], function () {
     Route::get('/', [LayananController::class, 'index']);
     Route::post('/get-list', [LayananController::class, 'getList']);
@@ -30,6 +32,9 @@ Route::group(['prefix' => 'pertanyaan'], function () {
 
 Route::group(['prefix' => 'jawaban'], function () {
     Route::get('/', [JawabanController::class, 'index']);
+    Route::post('/', [JawabanController::class, 'store']);
     Route::post('/get-list', [JawabanController::class, 'getList']);
+    Route::put('/{id}', [JawabanController::class, 'update']);
+    Route::delete('/{id}', [JawabanController::class, 'destroy']);
     
 });

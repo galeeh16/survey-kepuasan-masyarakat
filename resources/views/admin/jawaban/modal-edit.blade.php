@@ -7,6 +7,8 @@
             </div>
             <div class="modal-body px-4">
                 <form method="post" id="form-edit-jawaban" spellcheck="false">
+                    <input type="hidden" id="id_edit" name="id_edit">
+
                     <div class="mb-3">
                         <label class="col-form-label" style="font-weight: 600;">Kode <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="kode_edit" id="kode_edit">
@@ -17,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label" style="font-weight: 600;">Nilai <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="nilai-edit" id="nilai-edit">
+                        <input type="text" class="form-control" name="nilai_edit" id="nilai_edit">
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="button" data-bs-dismiss="modal" data-bs-target="#modal-edit-jawaban" class="btn btn-danger me-3">Batal</button>

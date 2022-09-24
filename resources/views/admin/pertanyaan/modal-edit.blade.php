@@ -23,25 +23,20 @@
 
                     <div class="mb-3 div-jawaban">
                         <label class="col-form-label mb-2 label-jawaban" style="font-weight: 600;">Pilih Jawaban <span class="text-danger">*</span></label>
-                        @php 
-                            $total_bagi_dua_edit = count($jawabans) / 2;
-                        @endphp
-
-                        @foreach ($jawabans as $i => $jawaban_edit)
-                            <div class="w-100">
-                                @if($i <= $total_bagi_dua_edit) 
-                                    <div class="form-check mb-2">
-                                        <input type="checkbox" name="edit_jawaban[]" value="{{$jawaban_edit->id}}" class="form-check-input jawaban" id="jawaban_edit_{{$jawaban_edit->id}}">
+                        <div class="row">
+                            @foreach ($jawabans_chunk as $i => $jawaban_chunk)
+                                <div class="col-lg-6 col-xs-12 mb-4">
+                                    @foreach($jawaban_chunk as $jawaban_edit)
+                                        <div class="w-100">
+                                            <div class="form-check mb-2">
+                                                <input type="checkbox" name="edit_jawaban[]" value="{{$jawaban_edit->id}}" class="form-check-input jawaban" id="jawaban_edit_{{$jawaban_edit->id}}">
                                         <label class="form-check-label" for="jawaban_{{$jawaban_edit->id}}">{{ $jawaban_edit->kode }} - {{ $jawaban_edit->jawaban }}</label>
-                                    </div>
-                                @else
-                                    <div class="form-check mb-2">
-                                        <input type="checkbox" name="edit_jawaban[]" value="{{$jawaban_edit->id}}" class="form-check-input jawaban" id="jawaban_edit_{{$jawaban_edit->id}}">
-                                        <label class="form-check-label" for="jawaban_{{$jawaban_edit->id}}">{{ $jawaban_edit->kode }} - {{ $jawaban_edit->jawaban }}</label>
-                                    </div>
-                                @endif
-                            </div>
-                        @endforeach
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end">

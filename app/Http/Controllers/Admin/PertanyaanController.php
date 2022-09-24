@@ -16,8 +16,9 @@ class PertanyaanController extends Controller
 
     public function index()
     {
-        $jawabans = DB::table('tbl_jawaban')->get();
-        return view('admin.pertanyaan.index', ['jawabans' => $jawabans]);
+        $jawabans = DB::table('tbl_jawaban')->get()->toArray();
+        $chunk = array_chunk($jawabans, 4);
+        return view('admin.pertanyaan.index', ['jawabans_chunk' => $chunk]);
     }
 
     public function getList(Request $request)
