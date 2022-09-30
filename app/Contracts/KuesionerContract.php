@@ -12,7 +12,8 @@ interface KuesionerContract
         $pendidikan,
         $pekerjaan,
         $no_hp,
-        $nik
+        $nik,
+        $id_layanan,
     );
 
     public function addKuesioner(
@@ -20,4 +21,8 @@ interface KuesionerContract
         $id_layanan,
         array $answers
     );
+
+    public function getListPagination();
+
+    public function findRespondenById($id);
 }

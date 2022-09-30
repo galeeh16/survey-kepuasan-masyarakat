@@ -9,6 +9,4 @@ class Kuesioner extends Model
     protected $table = 'tbl_kuesioner';
 
     protected $guarded = [];
-
-    public $timestamps = false;
 }

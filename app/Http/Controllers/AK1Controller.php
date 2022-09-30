@@ -47,7 +47,8 @@ class AK1Controller extends Controller
                 $request->pendidikan,
                 $request->pekerjaan,
                 $request->no_hp,
-                $request->nik
+                $request->nik,
+                1
             );   
 
             $add_kuesioner = $this->kuesionerService->addKuesioner(

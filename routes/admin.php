@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\JawabanController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KuesionerController;
 use App\Http\Controllers\Admin\PertanyaanController;
 
 /**
@@ -36,5 +37,10 @@ Route::group(['prefix' => 'jawaban'], function () {
     Route::post('/get-list', [JawabanController::class, 'getList']);
     Route::put('/{id}', [JawabanController::class, 'update']);
     Route::delete('/{id}', [JawabanController::class, 'destroy']);
-    
+});
+
+Route::group(['prefix' => 'kuesioner'], function () {
+    Route::get('/', [KuesionerController::class, 'index']);
+    Route::get('/{id}', [KuesionerController::class, 'show']);
+    Route::post('/get-list', [KuesionerController::class, 'getList']);
 });

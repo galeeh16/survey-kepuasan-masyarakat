@@ -20,17 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pertanyaan');
             $table->unsignedBigInteger('id_jawaban');
             $table->unsignedBigInteger('penilaian')->nullable(); // ??
-            $table->datetime('created_at')->useCurrent();
-
-            // ??
-            $table->datetime('tanggal_ak1')->nullable();
-            $table->datetime('tanggal_rekom_passport')->nullable();
-            $table->datetime('tanggal_pelatihan')->nullable();
-            $table->datetime('tanggal_lpk')->nullable();
-            $table->datetime('tanggal_pencatatan_perusahaan')->nullable();
-            $table->datetime('tanggal_perselisihan_hub_industrial')->nullable();
-            // 
-
+            $table->timestamps();
         });
     }
 

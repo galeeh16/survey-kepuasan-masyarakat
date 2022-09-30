@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pekerjaan')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('nik')->nullable();
+            $table->integer('id_layanan')->nullable();
             $table->datetime('created_at')->useCurrent();
         });
     }

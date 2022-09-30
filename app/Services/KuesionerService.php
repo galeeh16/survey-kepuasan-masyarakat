@@ -16,7 +16,8 @@ final class KuesionerService implements KuesionerContract
         $pendidikan,
         $pekerjaan,
         $no_hp,
-        $nik
+        $nik,
+        $id_layanan,
     )
     {
         $responden = Responden::create([
@@ -25,7 +26,8 @@ final class KuesionerService implements KuesionerContract
             'pendidikan' => $pendidikan, 
             'pekerjaan' => $pekerjaan, 
             'no_hp' => $no_hp, 
-            'nik' => $nik
+            'nik' => $nik,
+            'id_layanan' => $id_layanan
         ]);
 
         return $responden;
@@ -54,5 +56,21 @@ final class KuesionerService implements KuesionerContract
 
         // lebih baik gunakan query builder untuk performa lebih baik
         Kuesioner::insert($data_insert);
+    }
+
+    public function getListPagination()
+    {
+        // return Responden::with('kuesioners')
+        //         ->paginate(10)
+        //         ->toArray();
+
+        return Responden::with(['layanan'])->paginate(10)->toArray();
+    }
+
+    public function findRespondenById($id)
+    {
+        return Responden::with(['layanan', 'kuesioners'])
+                ->where('id', $id)
+                ->first(); 
     }
 }
