@@ -25,4 +25,6 @@ interface KuesionerContract
     public function getListPagination();
 
     public function findRespondenById($id);
+
+    public function updateKuesionerByRespondenId($id_responden, array $answers);
 }

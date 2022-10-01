@@ -25,8 +25,7 @@
 
       <link rel="stylesheet" href="{{ asset('assets/js/DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/js/sweetalert/sweetalert2.min.css') }}">
-      {{-- <link rel="stylesheet" href="{{ asset('assets/js/select2/select2.min.css') }}"> --}}
-      {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     
       <title>@yield('title')</title>
       
@@ -109,9 +108,8 @@
     
     <script src="{{ asset('assets/js/DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/select2/select2.min.js') }}"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    <script src="{{ asset('assets/js/active-sidebar.js') }}?v=1.0.0"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     @yield('script')
   </body>

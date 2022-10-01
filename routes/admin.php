@@ -43,4 +43,5 @@ Route::group(['prefix' => 'kuesioner'], function () {
     Route::get('/', [KuesionerController::class, 'index']);
     Route::get('/{id}', [KuesionerController::class, 'show']);
     Route::post('/get-list', [KuesionerController::class, 'getList']);
+    Route::put('/{id}', [KuesionerController::class, 'update']);
 });

@@ -9,6 +9,8 @@ interface LayananContract
 {
     public function getList(): array;
 
+    public function dropdownLayanan();
+
     public function addLayanan(array $data);
 
     public function deleteLayanan($id);

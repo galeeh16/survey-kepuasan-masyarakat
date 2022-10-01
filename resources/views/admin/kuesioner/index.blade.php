@@ -10,6 +10,60 @@
         <h5 class="mb-0">Data Responden</h5>
     </div>
     <div class="card-body">
+
+        <form method="post" id="form-filter" class="mb-5">
+            <div class="mb-2">
+                <b>Filter By :</b>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="mb-2">
+                        <label class="col-form-label">Layanan</label>
+                        <select name="layanan" id="layanan" class="form-select">
+                            <option value="">ALL</option>
+                            @foreach ($layanans as $layanan)
+                                <option value="{{ $layanan->id }}">{{ $layanan->namalayanan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Tanggal Survey</label>
+                        <div class="d-flex align-items-center">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="date_from" name="date_from" autocomplete="off">
+                                <div class="position-absolute" style="font-weight: 500; top: 6px; right: 12px; cursor: pointer; font-size: 18px; font-family: monospace; color: #9196a1;" onclick="resetDateFrom()">
+                                    x
+                                </div>
+                            </div>
+                            <div class="mx-3">s/d</div>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="date_to" name="date_to" autocomplete="off"> 
+                                <div class="position-absolute" style="font-weight: 500; top: 6px; right: 12px; cursor: pointer; font-size: 18px; font-family: monospace; color: #9196a1;" onclick="resetDateTo()">
+                                    x
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="d-flex justify-content-between mb-3">
+            <button type="button" class="btn btn-success" id="btn-export-excel" style="align-self: baseline;">
+                Export Excel
+            </button>
+
+            {{-- <div style="max-width: 400px; width: 350px;" class="mb-3 position-relative">
+                <input type="text" class="form-control form-control-sm pe-5" name="search" placeholder="Cari Nama, NIK, No HP..." autocomplete="off" spellcheck="false">
+                <div class="position-absolute" style="top: 4px; right: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" color="#9196a1">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </div>
+            </div> --}}
+        </div>
+
         <table id="table" class="table table-bordered table-hover" style="width: 100%;">
             <thead>
                 <tr>
@@ -34,15 +88,29 @@
 <script>
     var table;
 
+
+    function resetDateFrom() {
+        $('#date_from').datepicker('setDate', null);
+    }
+
+    function resetDateTo() {
+        $('#date_to').datepicker('setDate', null);
+    }
+
     function fetchData() {
         table = $('#table').DataTable({
             processing: true,
             serverSide: true,
             destroy: true,
             ordering: false,
-            searching: false,
+            searching: true,
+            searchDelay: 500,
             deferRender: true,
             scrollX: true,
+            language: {
+                search: "", // buat ngilangin label tulisan search nya
+                searchPlaceholder: "Cari nama, nik, no_hp..."
+            },
             ajax: {
                 url : "{{ url('/admin/kuesioner/get-list') }}",
                 type: 'post',
@@ -51,7 +119,11 @@
                     return {
                         ...d,
                         page: parseInt( $('#table').DataTable().page.info().page + 1),
-                        search: $('input[name=search]').val()
+                        // search: $('input[name=search]').val(),
+                        search: $('#table_filter input[type="search"]').val(),
+                        layanan: $('#layanan').val(),
+                        date_from: $('#date_from').val(),
+                        date_to: $('#date_to').val(),
                     }
                 }
             },
@@ -66,20 +138,9 @@
                     return row.layanan ? row.layanan.namalayanan : '-';
                 }},
                 {data: 'tanggal_survey', class: 'text-nowrap', render: function(data, type, row) {
-                    return row.created_at;
+                    return dateFormat(row.created_at);
                 }},
                 {"data": "action", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
-                    // return `
-                    //     <div class="d-flex justify-content-center">
-                    //         <button 
-                    //             type="button" 
-                    //             class="btn btn-sm btn-success btn-edit me-2 d-flex" 
-                    //             data-id="${row.id}" 
-                    //         >
-                    //             Detail
-                    //         </button> 
-                    //     </div>    
-                    // `;
                     let urlDetail = '{{ url('admin/kuesioner') }}' + '/' + row.id;
                     return `
                         <div class="d-flex justify-content-center">
@@ -101,6 +162,72 @@
 
     $(document).ready(function() {
         fetchData();
+
+        $('input[name=search]').on('keyup', debounce(() => fetchData(), 300));
+
+        
+        $('#date_from, #date_to').datepicker('destroy').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay));
+            }
+        });
+
+        $('#form-filter').on('submit', function(e) {
+            e.preventDefault();
+            fetchData();
+        });
+
+        $('#btn-export-excel').on('click', function() {
+            $.ajax({
+                url: '/admin/kusioner',
+                type: "post",
+                headers: { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content') },
+                beforeSend: function() {
+                    showLoading()
+                },
+                xhr: function() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 2) {
+                            if (xhr.status == 200) {
+                                xhr.responseType = "blob";
+                            } else {
+                                xhr.responseType = "text";
+                            }
+                        }
+                    };
+                    return xhr;
+                },
+                data: {
+                    data: ''
+                },
+                success: function(data, status, xhr) {
+                    swal.close();
+                    var fileName = xhr.getResponseHeader('content-disposition').split('filename=')[1].split(';')[0];
+                    var a = document.createElement('a');
+                    var url = window.URL.createObjectURL(data);
+                    a.href = url;
+                    a.download = fileName.replace(/\"/g, '');
+                    document.body.append(a);
+                    a.click();
+                    a.remove();
+                    window.URL.revokeObjectURL(url);
+                },
+                error: function(xhr, stat, err) {
+                    swal.close();
+                    
+                    if (xhr.status == 400 || xhr.status == 404) {
+                        Swal.fire('', 'Gagal mendownload file', 'warning');
+                    }
+                }
+            });
+            // end ajax 
+        });
+
+
     });
 </script>
 @endsection

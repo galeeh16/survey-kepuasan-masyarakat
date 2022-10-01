@@ -67,7 +67,7 @@
     <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
 
     <script src="{{ asset('jquery-3.6.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/active-sidebar.js') }}"></script>
+    <script src="{{ asset('assets/js/active-sidebar.js') }}?v=1.0.0"></script>
 
     <script src="{{ asset('assets/js/sweetalert/sweetalert2@11.js') }}"></script>
 

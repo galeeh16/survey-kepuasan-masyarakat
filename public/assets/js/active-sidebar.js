@@ -60,3 +60,23 @@ function alertError(message='Whoops, something went wrong.') {
 		icon: 'error' 
 	});
 }
+
+function dateFormat(datetime) {
+	let dates = datetime.split(' ');
+	let ta = new Date(dates[0]);
+	let month = (1 + ta.getMonth()).toString();
+	let mta = month.length > 1 ? month : '0' + month;
+	let date = ta.getDate().toString();
+	let tgl = date.length > 1 ? date : '0' + date;
+	// return ta.getFullYear() + '/' + mta + '/' + tgl;
+
+	return tgl + '-' + mta + '-' + ta.getFullYear();
+}
+
+function debounce(func, timeout = 300){
+	let timer;
+	return (...args) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => { func.apply(this, args); }, timeout);
+	};
+}
