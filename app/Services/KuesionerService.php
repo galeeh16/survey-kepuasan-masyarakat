@@ -119,8 +119,8 @@ final class KuesionerService implements KuesionerContract
         ";
 
         if (
-            $date_from != null && $date_from != '' 
-            && $date_to != null && $date_to != ''
+            $date_from != null && $date_from != '-' 
+            && $date_to != null && $date_to != '-'
         ) {
             $query .= " 
                 AND to_char(a.created_at, 'YYYYMMDD') BETWEEN '$date_from' AND '$date_to'
