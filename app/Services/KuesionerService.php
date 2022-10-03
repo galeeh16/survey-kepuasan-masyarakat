@@ -104,4 +104,35 @@ final class KuesionerService implements KuesionerContract
                 ]);
         }
     }
+
+    public function getDataExcelExport($date_from = null, $date_to = null, $jenis_layanan = null)
+    {
+        $query = "
+            SELECT 
+                a.id AS id_responden,
+                b.id_pertanyaan,
+                c.nilai
+            FROM tbl_responden a
+            JOIN tbl_kuesioner b ON b.id_responden = a.id
+            JOIN tbl_jawaban c ON b.id_jawaban = c.id
+            WHERE a.id NOTNULL  
+        ";
+
+        if (
+            $date_from != null && $date_from != '' 
+            && $date_to != null && $date_to != ''
+        ) {
+            $query .= " 
+                AND to_char(a.created_at, 'YYYYMMDD') BETWEEN '$date_from' AND '$date_to'
+            ";
+        }
+
+        if ($jenis_layanan != null && $jenis_layanan != '') {
+            $query .= " 
+                AND a.id_layanan = $jenis_layanan 
+            ";
+        }
+
+        return DB::select($query);
+    }
 }

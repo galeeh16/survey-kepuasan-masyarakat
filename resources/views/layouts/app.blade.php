@@ -26,7 +26,7 @@
       <link rel="stylesheet" href="{{ asset('assets/js/sweetalert/sweetalert2.min.css') }}">
 
       <style>
-        html, body {
+        html, body { 
             color: #2f3036;
         }
         .sidebar-default .sidebar-list .navbar-nav .nav-item .nav-link:not(.disabled) {

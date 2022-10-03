@@ -182,9 +182,9 @@
 
         $('#btn-export-excel').on('click', function() {
             $.ajax({
-                url: '/admin/kusioner',
+                url: '{{ url('/admin/kuesioner/export-excel') }}',
                 type: "post",
-                headers: { 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content') },
+                headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' },
                 beforeSend: function() {
                     showLoading()
                 },
@@ -202,7 +202,9 @@
                     return xhr;
                 },
                 data: {
-                    data: ''
+                    nama_layanan: $('#layanan').val() == '' ? 'ALL' : $('#layanan :selected').text(),
+                    date_from: $('#date_from').val() == '' ? '-' : $('#date_from').val(),
+                    date_to: $('#date_to').val() == '' ? '-' : $('#date_to').val(),
                 },
                 success: function(data, status, xhr) {
                     swal.close();

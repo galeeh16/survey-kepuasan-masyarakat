@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use Excel;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Contracts\LayananContract;
 use Illuminate\Support\Facades\DB;
 use App\Contracts\KuesionerContract;
+use App\Exports\ExportExcelFromView;
 use App\Http\Controllers\Controller;
 use App\Contracts\PertanyaanContract;
 
@@ -84,5 +86,29 @@ class KuesionerController extends Controller
             ], 500);
         }
 
+    }
+
+    public function exportExcel(Request $request)
+    {
+        $date_from = $request->date_from;
+        $date_to = $request->date_to;
+
+        $data = $this->kuesionerService->getDataExcelExport($date_from, $date_to, $request->jenis_layanan);
+        $respondens = [];
+
+        // group by id_responden
+        foreach ($data as $element) {
+            $respondens[$element->id_responden][] = $element;
+        }
+
+        return Excel::download(new ExportExcelFromView(
+            'admin.kuesioner.excel.result',
+            [
+                'respondens' => $respondens,
+                'nama_layanan' => $request->nama_layanan,
+                'date_from' => $request->date_from,
+                'date_to' => $request->date_to,
+            ]
+        ), 'Kuesioner.xlsx');
     }
 }

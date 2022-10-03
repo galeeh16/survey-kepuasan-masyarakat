@@ -27,4 +27,6 @@ interface KuesionerContract
     public function findRespondenById($id);
 
     public function updateKuesionerByRespondenId($id_responden, array $answers);
+
+    public function getDataExcelExport($date_from = null, $date_to = null, $jenis_layanan = null);
 }
