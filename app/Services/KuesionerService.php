@@ -41,6 +41,7 @@ final class KuesionerService implements KuesionerContract
     ) 
     {
         $data_insert = [];
+        $now = date('Y-m-d H:i:s');
 
         foreach ($answers as $answer) {
             $explode_answer = explode('_', $answer);
@@ -52,6 +53,7 @@ final class KuesionerService implements KuesionerContract
                 'id_layanan' => $id_layanan,
                 'id_pertanyaan' => $id_pertanyaan,
                 'id_jawaban' => $id_jawaban,
+                'created_at' => $now
             ];
         }
 
@@ -91,6 +93,8 @@ final class KuesionerService implements KuesionerContract
 
     public function updateKuesionerByRespondenId($id_responden, array $answers)
     {
+        $now = date('Y-m-d H:i:s');
+
         foreach ($answers as $answer) {
             $explode_answer = explode('_', $answer);
             $id_pertanyaan = $explode_answer[0];
@@ -100,7 +104,8 @@ final class KuesionerService implements KuesionerContract
             DB::table('tbl_kuesioner')
                 ->where('id', $id_kuesioner)
                 ->update([
-                    'id_jawaban' => $id_jawaban
+                    'id_jawaban' => $id_jawaban,
+                    'updated_at' => $now
                 ]);
         }
     }
@@ -111,19 +116,26 @@ final class KuesionerService implements KuesionerContract
             SELECT 
                 a.id AS id_responden,
                 b.id_pertanyaan,
-                c.nilai
+                c.nilai,
+                d.unsur,
+                b.created_at
             FROM tbl_responden a
             JOIN tbl_kuesioner b ON b.id_responden = a.id
             JOIN tbl_jawaban c ON b.id_jawaban = c.id
-            WHERE a.id NOTNULL  
+            JOIN tbl_pertanyaan d ON b.id_pertanyaan = d.id
+            WHERE 
+                a.id is NOT NULL
         ";
 
         if (
             $date_from != null && $date_from != '-' 
             && $date_to != null && $date_to != '-'
         ) {
+            $date_from_format = date('Y-m-d', strtotime($date_from));
+            $date_to_format = date('Y-m-d', strtotime($date_to));
+
             $query .= " 
-                AND to_char(a.created_at, 'YYYYMMDD') BETWEEN '$date_from' AND '$date_to'
+                AND a.created_at BETWEEN '$date_from_format' AND '$date_to_format'
             ";
         }
 
