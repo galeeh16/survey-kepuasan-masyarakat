@@ -117,8 +117,7 @@ final class KuesionerService implements KuesionerContract
                 a.id AS id_responden,
                 b.id_pertanyaan,
                 c.nilai,
-                d.unsur,
-                b.created_at
+                d.unsur
             FROM tbl_responden a
             JOIN tbl_kuesioner b ON b.id_responden = a.id
             JOIN tbl_jawaban c ON b.id_jawaban = c.id
