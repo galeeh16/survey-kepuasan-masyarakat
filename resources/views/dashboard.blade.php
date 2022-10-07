@@ -23,7 +23,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">AK-1</h5>
-                        <h4 class="mb-0 fw-bold text-muted">10.000</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_ak1 }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Rekom Passport</h5>
-                        <h4 class="mb-0 fw-bold text-muted">1.100</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_rekom_passport }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Pelatihan</h5>
-                        <h4 class="mb-0 fw-bold text-muted">90</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_pelatihan }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">LPK</h5>
-                        <h4 class="mb-0 fw-bold text-muted">900</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_lpk }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Pencatatan Perusahaan</h5>
-                        <h4 class="mb-0 fw-bold text-muted">290</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_perusahaan }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                     </div>
                     <div>
                         <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Perselisihan Hubungan Industrial</h5>
-                        <h4 class="mb-0 fw-bold text-muted">100</h4>
+                        <h4 class="mb-0 fw-bold text-muted">{{ $total_hub_intl }}</h4>
                         <p class="mb-0 text-muted">Mengikuti Survey</p>
                     </div>
                 </div>
@@ -222,32 +222,7 @@
 <script>
 $(document).ready(function() {
     var options = {
-        series: [
-            {
-                name: 'AK1',
-                data: [0, 0, 10000]
-            }, 
-            {
-                name: 'Rekom Passport',
-                data: [0, 0, 1100]
-            },
-            {
-                name: 'Pelatihan',
-                data: [0, 0, 90]
-            },
-            {
-                name: 'LPK',
-                data: [0, 0, 900]
-            },
-            {
-                name: 'Pencatatan Perusahaan',
-                data: [0, 0, 290]
-            },
-            {
-                name: 'Perselisihan Hubungan Industrial',
-                data: [0, 0, 100]
-            }
-        ],
+        series: [],
         chart: {
             height: 350,
             type: 'area',
