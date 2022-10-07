@@ -124,11 +124,11 @@
                     <div class="d-flex justify-content-end w-100 mb-5">
                         <div class="me-4 px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                             <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Ini :</h5>
-                            <h4 class="mb-0 fw-bold text-muted">12.480</h4>
+                            <h4 class="mb-0 fw-bold text-muted">{{ $total_bulan_ini }}</h4>
                         </div>
                         <div class="px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                             <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Sebelumnya :</h5>
-                            <h4 class="mb-0 fw-bold text-muted">18.820</h4>
+                            <h4 class="mb-0 fw-bold text-muted">{{ $total_bulan_sebelumnya }}</h4>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">

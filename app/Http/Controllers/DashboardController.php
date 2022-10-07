@@ -28,7 +28,12 @@ final class DashboardController extends Controller
                             $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
                         ->count();
                         
-            $total_bulan_ini = DB::table('tbl_responden')->where('created_at', date('Y-m-d'))->count();
+            $total_bulan_ini = DB::table('tbl_responden')
+                    ->whereBetween('created_at', [
+                        date('Y-m') . '-01',
+                        date('Y-m-d')
+                    ])
+                    ->count();
 
             return [
                 'show_logo' => 'show',
@@ -38,6 +43,8 @@ final class DashboardController extends Controller
                 'total_lpk' => number_format($total_lpk),
                 'total_perusahaan' => number_format($total_perusahaan),
                 'total_hub_intl' => number_format($total_hub_intl),
+                'total_bulan_ini' => number_format($total_bulan_ini),
+                'total_bulan_sebelumnya' => number_format($total_bulan_sebelumnya),
             ];
         });
 
