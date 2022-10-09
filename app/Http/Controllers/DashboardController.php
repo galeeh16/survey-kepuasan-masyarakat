@@ -24,10 +24,12 @@ final class DashboardController extends Controller
 
             $total_bulan_sebelumnya = DB::table('tbl_responden')
                         ->whereBetween('created_at', [
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01', 
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01 23:59:59', 
+                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before. ' 23:59:59'])
                         ->where('id_layanan', 1)
                         ->count();
+                        // ->toSql();
+            // dd($total_bulan_sebelumnya);
                         
             $total_bulan_ini = DB::table('tbl_responden')
                     ->whereBetween('created_at', [
@@ -112,8 +114,8 @@ final class DashboardController extends Controller
 
         $total_bulan_sebelumnya = DB::table('tbl_responden')
                     ->whereBetween('created_at', [
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01', 
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01 23:59:59', 
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before . ' 23:59:59'])
                     ->where('id_layanan', $id_layanan)
                     ->count();
                     
