@@ -109,6 +109,6 @@ class KuesionerController extends Controller
                 'date_from' => $request->date_from,
                 'date_to' => $request->date_to,
             ]
-        ), 'Kuesioner.xlsx');
+        ), 'Kuesioner.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
 }
