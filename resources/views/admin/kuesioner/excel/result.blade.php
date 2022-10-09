@@ -1,4 +1,4 @@
-{{-- <table>
+<table>
     <thead>
         <tr>
             <th colspan="1">Jenis Pelayanan</th>
@@ -127,10 +127,4 @@
             </th>
         </tr>
     </tfoot>
-</table> --}}
-
-<table>
-    <tr>
-        <td>tes</td>
-    </tr>
 </table>
