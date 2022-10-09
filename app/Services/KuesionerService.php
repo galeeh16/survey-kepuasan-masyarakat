@@ -112,38 +112,40 @@ final class KuesionerService implements KuesionerContract
 
     public function getDataExcelExport($date_from = null, $date_to = null, $jenis_layanan = null)
     {
-        $query = "
-            SELECT 
-                a.id AS id_responden,
-                b.id_pertanyaan,
-                c.nilai,
-                d.unsur
-            FROM tbl_responden a
-            JOIN tbl_kuesioner b ON b.id_responden = a.id
-            JOIN tbl_jawaban c ON b.id_jawaban = c.id
-            JOIN tbl_pertanyaan d ON b.id_pertanyaan = d.id
-            WHERE 
-                a.id is NOT NULL
-        ";
+        // $query = "
+        //     SELECT 
+        //         a.id AS id_responden,
+        //         b.id_pertanyaan,
+        //         c.nilai,
+        //         d.unsur
+        //     FROM tbl_responden a
+        //     JOIN tbl_kuesioner b ON b.id_responden = a.id
+        //     JOIN tbl_jawaban c ON b.id_jawaban = c.id
+        //     JOIN tbl_pertanyaan d ON b.id_pertanyaan = d.id
+        //     WHERE 
+        //         a.id is NOT NULL
+        // ";
 
-        if (
-            $date_from != null && $date_from != '-' 
-            && $date_to != null && $date_to != '-'
-        ) {
-            $date_from_format = date('Y-m-d', strtotime($date_from));
-            $date_to_format = date('Y-m-d', strtotime($date_to));
+        // if (
+        //     $date_from != null && $date_from != '-' 
+        //     && $date_to != null && $date_to != '-'
+        // ) {
+        //     $date_from_format = date('Y-m-d', strtotime($date_from));
+        //     $date_to_format = date('Y-m-d', strtotime($date_to));
 
-            $query .= " 
-                AND a.created_at BETWEEN '$date_from_format' AND '$date_to_format'
-            ";
-        }
+        //     $query .= " 
+        //         AND a.created_at BETWEEN '$date_from_format' AND '$date_to_format'
+        //     ";
+        // }
 
-        if ($jenis_layanan != null && $jenis_layanan != '') {
-            $query .= " 
-                AND a.id_layanan = $jenis_layanan 
-            ";
-        }
+        // if ($jenis_layanan != null && $jenis_layanan != '') {
+        //     $query .= " 
+        //         AND a.id_layanan = $jenis_layanan 
+        //     ";
+        // }
 
-        return DB::select($query);
+        // return DB::select($query);
+
+        return [];
     }
 }
