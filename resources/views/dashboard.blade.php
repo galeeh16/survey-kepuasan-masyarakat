@@ -8,6 +8,13 @@
     .text-dark {
         color: #32333b !important;
     }
+    .card.layanan:hover {
+        transition: all 0.3s ease-in-out;
+        -webkit-box-shadow: 0 10px 30px 0 rgb(17 38 146 / 20%);
+        box-shadow: 0 10px 30px 0 rgb(17 38 146 / 20%);
+        margin-bottom: 2rem;
+    
+    }
 </style>
 @endsection
 
@@ -162,7 +169,7 @@
 
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/ak1') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: red;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
@@ -177,7 +184,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/rekom-passport') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #0bdd43;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
@@ -192,7 +199,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/pelatihan') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #d900ff;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
@@ -207,7 +214,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/lpk') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3a57e8;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
@@ -222,7 +229,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/pencatatan-perusahaan') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #000480;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
@@ -237,7 +244,7 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
             <a href="{{ url('/perselisihan-hubungan-industrial') }}">
-                <div class="card card-body">
+                <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #4e563b;">                                
                             <path opacity="0.4" d="M16.191 2H7.81C4.77 2 3 3.78 3 6.83V17.16C3 20.26 4.77 22 7.81 22H16.191C19.28 22 21 20.26 21 17.16V6.83C21 3.78 19.28 2 16.191 2Z" fill="currentColor"></path>                                
