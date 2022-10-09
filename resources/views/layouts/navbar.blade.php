@@ -30,14 +30,23 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav d-flex justify-content-end me-xl-4" style="flex: 1;">
           <li class="nav-item">
-            <a class="nav-link" href="#layanan">Layanan</a>
+            <a class="nav-link text-reset" href="#layanan">Layanan</a>
           </li>
         </ul>
 
         <div class="navbar-nav ms-auto align-items-center navbar-list" style="height: 50px;">
+          @if(session()->get('username'))
+          <a href="{{ url('admin/dashboard') }}" class="me-4 text-reset">                           
+            Admin Page
+          </a>
+          <a href="{{ url('auth/logout') }}" class="btn btn-primary">                           
+            Logout
+          </a>
+          @else
           <a href="{{ url('login') }}" class="btn btn-primary">                           
             Login
           </a>
+          @endif
         </div>
         
       </div>

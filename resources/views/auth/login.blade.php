@@ -52,7 +52,12 @@
 
         <div class="left">
             <div class="login">
-                <h2 class="mb-5 fw-semibold">Login to App</h2>
+                <div class="text-center">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('logobaru.png') }}" style="height: 54px;" class="mb-3"/>
+                    </a>  
+                </div>
+                <h2 class="mb-5 fw-semibold text-center">Login to App</h2>
 
                 <div id="error-msg">
                     
