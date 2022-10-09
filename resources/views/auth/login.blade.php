@@ -31,7 +31,7 @@
         .right {
             flex: 1;
             width: 100%;
-            background: linear-gradient(45deg, #6179ed, #899af1);
+            background: linear-gradient(45deg, #bac6ff, #da91da);
         }
 
     .eye-login {
@@ -95,8 +95,8 @@
                 </div>
             </div>
         </div>
-        <div class="right">
-
+        <div class="right position-relative">
+            <img src="{{ asset('assets/images/login.svg') }}" alt="Login" style="max-width: 700px; position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%);"
         </div>
     </div>   
 </div>
