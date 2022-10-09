@@ -26,6 +26,7 @@ final class DashboardController extends Controller
                         ->whereBetween('created_at', [
                             $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01', 
                             $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                        ->where('id_layanan', 1)
                         ->count();
                         
             $total_bulan_ini = DB::table('tbl_responden')
@@ -33,6 +34,7 @@ final class DashboardController extends Controller
                         date('Y-m') . '-01',
                         date('Y-m-d')
                     ])
+                    ->where('id_layanan', 1)
                     ->count();
 
             $total_mengikuti_survey = $total_ak1 + $total_rekom_passport + $total_pelatihan + $total_lpk + $total_perusahaan + $total_hub_intl;
@@ -69,9 +71,30 @@ final class DashboardController extends Controller
 
             $data_series = [
                 [
-                    'name' => 'Layanan',
+                    'name' => 'AK1',
                     'data' => [$total_ak1, $total_rekom_passport, $total_pelatihan, $total_lpk, $total_perusahaan, $total_hub_intl]
-                ]
+                    // 'data' => [$total_ak1],
+                ],
+                // [
+                //     'name' => 'Rekom Passport',
+                //     'data' => [$total_rekom_passport],
+                // ],
+                // [
+                //     'name' => 'Total Pelatihan',
+                //     'data' => [$total_pelatihan],
+                // ],
+                // [
+                //     'name' => 'Total LPK',
+                //     'data' => [$total_lpk],
+                // ],
+                // [
+                //     'name' => 'Total Perusahaan',
+                //     'data' => [$total_perusahaan],
+                // ],
+                // [
+                //     'name' => 'Total Hubungan Industrial',
+                //     'data' => [$total_hub_intl],
+                // ],
             ];
             
         //     return $data_series;
@@ -79,5 +102,32 @@ final class DashboardController extends Controller
 
         // return response()->json($data_grafik);
         return response()->json($data_series);
+    }
+
+    public function filterByLayanan($id_layanan): JsonResponse 
+    {
+        $bln_sebelum_1 = date('m', strtotime('now -1 month'));
+        $thn_sebelum_1 = date('Y', strtotime('now -1 month'));
+        $total_day_before = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime('now -1 month')), date('Y', strtotime('now -1 month')));
+
+        $total_bulan_sebelumnya = DB::table('tbl_responden')
+                    ->whereBetween('created_at', [
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01', 
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                    ->where('id_layanan', $id_layanan)
+                    ->count();
+                    
+        $total_bulan_ini = DB::table('tbl_responden')
+                ->whereBetween('created_at', [
+                    date('Y-m') . '-01',
+                    date('Y-m-d')
+                ])
+                ->where('id_layanan', $id_layanan)
+                ->count();
+
+        return response()->json([
+            'total_bulan_ini' => $total_bulan_ini,
+            'total_bulan_sebelumnya' => $total_bulan_sebelumnya
+        ]);
     }
 }

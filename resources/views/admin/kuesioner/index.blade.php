@@ -68,12 +68,12 @@
             <thead>
                 <tr>
                     <th class="text-nowrap text-center" style="width: 50px;">No</th>
+                    <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                     <th class="text-nowrap text-center">Nama</th>
                     <th class="text-nowrap text-center">NIK</th>
                     <th class="text-nowrap text-center">No HP</th>
                     <th class="text-nowrap text-center">Layanan</th>
                     <th class="text-nowrap text-center">Tanggal Survey</th>
-                    <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -129,16 +129,7 @@
             },
             columns: [
                 {"data": "no", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
-	                    return meta.row + meta.settings._iDisplayStart + 1;
-                }},
-                {data: 'nama_responden', class: 'text-nowrap'},
-                {data: 'nik', class: 'text-nowrap'},
-                {data: 'no_hp', class: 'text-nowrap'},
-                {data: 'layanan', class: 'text-nowrap', render: function(data, type, row) {
-                    return row.layanan ? row.layanan.namalayanan : '-';
-                }},
-                {data: 'tanggal_survey', class: 'text-nowrap', render: function(data, type, row) {
-                    return dateFormat(row.created_at);
+	                return meta.row + meta.settings._iDisplayStart + 1;
                 }},
                 {"data": "action", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
                     let urlDetail = '{{ url('admin/kuesioner') }}' + '/' + row.id;
@@ -151,9 +142,18 @@
                                 Detail
                             </a> 
                         </div>    
-                    `;
-                    
+                    `; 
                 }},
+                {data: 'nama_responden', class: 'text-nowrap'},
+                {data: 'nik', class: 'text-nowrap'},
+                {data: 'no_hp', class: 'text-nowrap'},
+                {data: 'layanan', class: 'text-nowrap', render: function(data, type, row) {
+                    return row.layanan ? row.layanan.namalayanan : '-';
+                }},
+                {data: 'tanggal_survey', class: 'text-nowrap', render: function(data, type, row) {
+                    return dateFormat(row.created_at);
+                }},
+                
             ],
             order: [[1, 'asc']],
         }).columns.adjust();

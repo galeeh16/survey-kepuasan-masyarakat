@@ -15,6 +15,7 @@ Route::get('/auth/logout', [AuthController::class, 'logout']);
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/data-grafik-bar', [DashboardController::class, 'dataGrafikBar']);
+Route::get('/dashboard-filter-layanan/{id_layanan}', [DashboardController::class, 'filterByLayanan']);
 
 
 Route::get('/ak1', [AK1Controller::class, 'index']);

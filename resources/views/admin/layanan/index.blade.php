@@ -16,9 +16,9 @@
                 <thead>
                     <tr>
                         <th class="text-nowrap text-center" style="width: 50px;">No</th>
+                        <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                         <th class="text-nowrap text-center">Layanan</th>
                         <th class="text-nowrap text-center">Deskripsi</th>
-                        <th class="text-nowrap text-center" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,10 +61,8 @@
             },
             columns: [
                 {"data": "no", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
-	                    return meta.row + meta.settings._iDisplayStart + 1;
+	                return meta.row + meta.settings._iDisplayStart + 1;
                 }},
-                {data: 'namalayanan', class: 'text-nowrap'},
-                {data: 'deskripsi', class: 'text-nowrap'},
                 {"data": "action", "orderable": false, class: "text-center", render: function (data, type, row, meta) {
                     return `
                         <div class="d-flex justify-content-center">
@@ -87,9 +85,10 @@
                                 Hapus
                             </button>
                         </div>    
-                    `;
-                    
+                    `; 
                 }},
+                {data: 'namalayanan', class: 'text-nowrap'},
+                {data: 'deskripsi', class: 'text-nowrap'},
             ],
             order: [[1, 'asc']],
         }).columns.adjust();

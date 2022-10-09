@@ -14,7 +14,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(1)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(2)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(3)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -67,7 +67,7 @@
         </div>
 
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(4)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(5)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-            <div class="card">
+            <div class="card" onclick="fiterByLayanan(6)" style="cursor: pointer;">
                 <div class="card-body d-flex align-items-center" style="height: 120px;">
                     <div class="me-3">
                         <svg class="icon-card" width="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -132,11 +132,11 @@
                        <div class="d-flex">
                             <div class="me-4 px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                                 <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Ini :</h5>
-                                <h4 class="mb-0 fw-bold text-muted">{{ $total_bulan_ini }}</h4>
+                                <h4 class="mb-0 fw-bold text-muted" id="total_bulan_ini">{{ $total_bulan_ini }}</h4>
                             </div>
                             <div class="px-3 py-2 rounded" style="width: 205px; background-color: #d8ddfa;">
                                 <h5 class="mb-0 fw-bold mb-1" style="font-size: 18px;">Bulan Sebelumnya :</h5>
-                                <h4 class="mb-0 fw-bold text-muted">{{ $total_bulan_sebelumnya }}</h4>
+                                <h4 class="mb-0 fw-bold text-muted" id="total_bulan_sebelumnya">{{ $total_bulan_sebelumnya }}</h4>
                             </div>
                        </div>
                     </div>
@@ -261,6 +261,13 @@ function rupiah(number) {
     return formatNumbering.format(number)
 }
 
+async function fiterByLayanan(id) {
+    const response = await fetch(`/dashboard-filter-layanan/${id}`);
+    const json = await response.json();
+    document.querySelector('#total_bulan_ini').innerHTML = json.total_bulan_ini;
+    document.querySelector('#total_bulan_sebelumnya').innerHTML = json.total_bulan_sebelumnya;
+}
+
 var options = {
         series:  [
                 {
@@ -275,6 +282,7 @@ var options = {
                 show: false
             }
         },
+        
         stroke: {
             curve: 'smooth',
             width: 1.5
@@ -283,14 +291,29 @@ var options = {
             show: false,
             categories: ["AK1", "Rekom Passport", "Pelatihan", "LPK", "Pencatatan Perusahaan", "Perselisihan Hub Industrial"]
         },
+
         tooltip: {
             x: {
             format: 'dd/MM/yy HH:mm'
             },
         },
-        colors: ['#008FFB', '#00E396', '#FEB019'],
+        colors: [ // this array contains different color code for each data
+            "#FF0000",
+            "#0bdd43",
+            "#d900ff",
+            "#3a57e8",
+            "#000480",
+            "#4e563b",
+        ],
         fill: {
-            colors: ['#008FFB', '#00E396', '#FEB019'],
+            colors: [
+                "#FF0000",
+                "#0bdd43",
+                "#d900ff",
+                "#3a57e8",
+                "#000480",
+                "#4e563b",
+            ],
             gradient: {
                 opacityFrom: 0.6,
                 opacityTo: 0.1
@@ -298,9 +321,9 @@ var options = {
         },
         plotOptions: {
             bar: {
-                distributed: false, // different color each bar
+                distributed: true, // different color each bar
                 columnWidth: '60%',
-                borderRadius: 0,
+                borderRadius: 2,
                 dataLabels: {
                     orientation: 'horizontal',
                     position: 'top',
@@ -309,6 +332,13 @@ var options = {
                 }
             },
         },
+        // plotOptions: {
+        //     bar: {
+        //         distributed: true, // this line is mandatory
+        //         horizontal: false,
+        //         barHeight: '85%',
+        //     },
+        // },
         dataLabels: {
             offsetY: -18,
             style: {
