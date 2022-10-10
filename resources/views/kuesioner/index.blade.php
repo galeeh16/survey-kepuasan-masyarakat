@@ -21,15 +21,17 @@
 @endsection
 
 @section('content')
+    <input type="hidden" name="id_layanan" id="id_layanan" value="{{ $id_layanan }}">
+
     <div class="card">
         <div class="card-header">
-            <h4 class="mb-0 card-title">AK1</h4>
+            <h4 class="mb-0 card-title">{{ $namalayanan }}</h4>
         </div>
         <div class="card-body">
             <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" id="btn-isi-survey" data-bs-target="#modal-isi-survey">Isi Survey</button>
             
             {{-- Survey Question --}}
-            @include('ak1.survey-question')
+            @include('kuesioner.survey-question')
         </div>
     </div>
 
@@ -95,7 +97,7 @@
         let kuesionerData = $('#form-isi-survey').serialize();
         
         $.ajax({
-            url: "{{ url('ak1/add-kuesioner') }}",
+            url: "{{ url('kuesioner/add-kuesioner') }}",
             type: 'post',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -103,7 +105,7 @@
             beforeSend: function() {
                 showLoading();
             },
-            data: respondenData + '&' + kuesionerData,
+            data: respondenData + '&' + kuesionerData + '&id_layanan=' + $('#id_layanan').val(),
             success: function(response) {
                 alertSuccess(response.message);
                 $('#form-isi-data')[0].reset();

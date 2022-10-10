@@ -166,7 +166,7 @@
         </div>
 
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/ak1') }}">
+            <a href="{{ url('/kuesioner/ak1') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: red;">                                
@@ -181,7 +181,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/rekom-passport') }}">
+            <a href="{{ url('/kuesioner/rekom-passport') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #0bdd43;">                                
@@ -196,7 +196,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/pelatihan') }}">
+            <a href="{{ url('/kuesioner/pelatihan') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #d900ff;">                                
@@ -211,7 +211,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/lpk') }}">
+            <a href="{{ url('/kuesioner/lpk') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #3a57e8;">                                
@@ -226,7 +226,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/pencatatan-perusahaan') }}">
+            <a href="{{ url('/kuesioner/pencatatan-perusahaan') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #000480;">                                
@@ -241,7 +241,7 @@
             </a>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12">
-            <a href="{{ url('/perselisihan-hubungan-industrial') }}">
+            <a href="{{ url('/kuesioner/perselisihan-hubungan-industrial') }}">
                 <div class="card card-body layanan">
                     <div class="text-center">
                         <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #4e563b;">                                
