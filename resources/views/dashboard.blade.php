@@ -297,11 +297,11 @@ var options = {
             categories: ["AK1", "Rekom Passport", "Pelatihan", "LPK", "Pencatatan Perusahaan", "Perselisihan Hub Industrial"]
         },
 
-        tooltip: {
-            x: {
-            format: 'dd/MM/yy HH:mm'
-            },
-        },
+        // tooltip: {
+        //     x: {
+        //     format: 'dd/MM/yy HH:mm'
+        //     },
+        // },
         colors: [ // this array contains different color code for each data
             "#FF0000",
             "#0bdd43",
