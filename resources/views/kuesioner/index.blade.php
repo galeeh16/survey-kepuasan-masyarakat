@@ -24,7 +24,7 @@
         width: 40px;
         height: 40px;
         opacity: 1;
-        z-index: 99999;
+        z-index: 99;
         /* color: #607D8B; */
         cursor: pointer;
         line-height: 45px;
