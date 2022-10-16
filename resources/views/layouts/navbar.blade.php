@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav d-flex justify-content-end me-xl-4" style="flex: 1;">
           <li class="nav-item">
-            <a class="nav-link text-reset" href="#layanan">Layanan</a>
+            <a class="nav-link text-reset" href="#layanan">Isi Survey</a>
           </li>
         </ul>
 
