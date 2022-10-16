@@ -17,15 +17,6 @@
                 position: relative;
                 padding: 140px 4.2rem;                
             }
-            /* .login {
-                    position: absolute;
-                    background: #eee;
-                    margin: 0 3rem;
-                    top: 50%;
-                    left: 50%;
-                    -webkit-transform: translate(-50%, -50%);
-                    transform: translate(-50%, -50%);
-                } */
         }
 
         .right {
@@ -57,6 +48,7 @@
                         <img src="{{ asset('logobaru.png') }}" style="height: 54px;" class="mb-3"/>
                     </a>  
                 </div>
+
                 <h2 class="mb-5 fw-semibold text-center">Login to App</h2>
 
                 <div id="error-msg">

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Contracts\KuesionerContract;
 use App\Exports\ExportExcelFromView;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Contracts\PertanyaanContract;
 
 class KuesionerController extends Controller
@@ -24,6 +25,15 @@ class KuesionerController extends Controller
     )
     {
         //
+    }
+
+    // for admin only 
+    public function adminOnly(): View 
+    {
+        $layanans = $this->layananService->dropdownLayanan();
+        return view('admin.kuesioner.admin-kuesioner', [
+            'layanans' => $layanans
+        ]);
     }
 
     public function index(): View
@@ -101,6 +111,16 @@ class KuesionerController extends Controller
             $respondens[$element->id_responden][] = $element;
         }
 
+        $nama_file = $request->nama_layanan;
+        
+        if ( 
+            $date_from != null && $date_from != '-' 
+            && $date_to != null && $date_to != '-') {
+            $nama_file .= '-' . date('Y-m-d', strtotime(str_replace('/', '-', $date_from))) . '-' . date('Y-m-d', strtotime(str_replace('/', '-', $date_to)));
+        }
+
+        $nama_file .= '.xlsx'; // extension
+
         return Excel::download(new ExportExcelFromView(
             'admin.kuesioner.excel.result',
             [
@@ -108,8 +128,9 @@ class KuesionerController extends Controller
                 'nama_layanan' => $request->nama_layanan,
                 'date_from' => $request->date_from,
                 'date_to' => $request->date_to,
+                'total_responden' => count($respondens)
             ]
-        ), 'Kuesioner.xlsx', \Maatwebsite\Excel\Excel::XLSX, [
+        ), $nama_file, \Maatwebsite\Excel\Excel::XLSX, [
             'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         ]);
     }

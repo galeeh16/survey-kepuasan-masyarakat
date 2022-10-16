@@ -78,15 +78,15 @@
                 Jml nilai per unsur : <br/>
                 Jml Kuesioner yg terisi
             </th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u1 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u2 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u3 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u4 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u5 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u6 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u7 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u8 / 150, 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round($total_u9 / 150, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u1 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u2 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u3 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u4 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u5 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u6 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u7 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u8 / $total_responden, 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round($total_u9 / $total_responden, 4) }}</th>
         </tr>
         <tr>
             <th align="left" style="vertical-align: middle;">
@@ -94,15 +94,15 @@
                 unsur <br/>
                 = NRR per unsur x 0.11
             </th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u1 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u2 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u3 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u4 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u5 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u6 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u7 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u8 / 150 * 0.11), 4) }}</th>
-            <th align="center" style="vertical-align: middle;">{{ round(($total_u9 / 150 * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u1 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u2 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u3 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u4 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u5 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u6 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u7 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u8 / $total_responden * 0.11), 4) }}</th>
+            <th align="center" style="vertical-align: middle;">{{ round(($total_u9 / $total_responden * 0.11), 4) }}</th>
         </tr>
         <tr>
             <th align="left" style="vertical-align: middle;">
@@ -113,15 +113,15 @@
             <th align="center" colspan="9" style="vertical-align: middle;">
                 {{
                     round((
-                        ($total_u1 / 150 * 0.11) + 
-                        ($total_u2 / 150 * 0.11) + 
-                        ($total_u3 / 150 * 0.11) + 
-                        ($total_u4 / 150 * 0.11) + 
-                        ($total_u5 / 150 * 0.11) + 
-                        ($total_u6 / 150 * 0.11) + 
-                        ($total_u7 / 150 * 0.11) + 
-                        ($total_u8 / 150 * 0.11) + 
-                        ($total_u9 / 150 * 0.11) 
+                        ($total_u1 / $total_responden * 0.11) + 
+                        ($total_u2 / $total_responden * 0.11) + 
+                        ($total_u3 / $total_responden * 0.11) + 
+                        ($total_u4 / $total_responden * 0.11) + 
+                        ($total_u5 / $total_responden * 0.11) + 
+                        ($total_u6 / $total_responden * 0.11) + 
+                        ($total_u7 / $total_responden * 0.11) + 
+                        ($total_u8 / $total_responden * 0.11) + 
+                        ($total_u9 / $total_responden * 0.11) 
                     ) * 25, 4)
                 }}
             </th>

@@ -23,16 +23,14 @@ final class DashboardController extends Controller
             $total_day_before = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime('now -1 month')), date('Y', strtotime('now -1 month')));
 
             $total_bulan_sebelumnya = DB::table('tbl_responden')
-                        ->whereBetween('created_at', [
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01 23:59:59', 
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before. ' 23:59:59'])
+                        ->whereBetween(DB::raw('DATE(created_at)'), [
+                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-', 
+                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
                         ->where('id_layanan', 1)
                         ->count();
-                        // ->toSql();
-            // dd($total_bulan_sebelumnya);
                         
             $total_bulan_ini = DB::table('tbl_responden')
-                    ->whereBetween('created_at', [
+                    ->whereBetween(DB::raw('DATE(created_at)'), [
                         date('Y-m') . '-01',
                         date('Y-m-d')
                     ])
@@ -64,12 +62,12 @@ final class DashboardController extends Controller
             $tgl_awal_bulan_ini = date('Y-m') . '-01'; 
             $tgl_now = date('Y-m-d');
 
-            $total_ak1 = DB::table('tbl_responden')->where('id_layanan', 1)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
-            $total_rekom_passport = DB::table('tbl_responden')->where('id_layanan', 2)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
-            $total_pelatihan = DB::table('tbl_responden')->where('id_layanan', 3)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
-            $total_lpk = DB::table('tbl_responden')->where('id_layanan', 4)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
-            $total_perusahaan = DB::table('tbl_responden')->where('id_layanan', 5)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
-            $total_hub_intl = DB::table('tbl_responden')->where('id_layanan', 6)->whereBetween('created_at', [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_ak1 = DB::table('tbl_responden')->where('id_layanan', 1)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_rekom_passport = DB::table('tbl_responden')->where('id_layanan', 2)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_pelatihan = DB::table('tbl_responden')->where('id_layanan', 3)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_lpk = DB::table('tbl_responden')->where('id_layanan', 4)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_perusahaan = DB::table('tbl_responden')->where('id_layanan', 5)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
+            $total_hub_intl = DB::table('tbl_responden')->where('id_layanan', 6)->whereBetween(DB::raw('DATE(created_at)'), [$tgl_awal_bulan_ini, $tgl_now])->count();
 
             $data_series = [
                 [
@@ -113,14 +111,14 @@ final class DashboardController extends Controller
         $total_day_before = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime('now -1 month')), date('Y', strtotime('now -1 month')));
 
         $total_bulan_sebelumnya = DB::table('tbl_responden')
-                    ->whereBetween('created_at', [
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' . '01 23:59:59', 
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before . ' 23:59:59'])
+                    ->whereBetween(DB::raw('DATE(created_at)'), [
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-', 
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
                     ->where('id_layanan', $id_layanan)
                     ->count();
                     
         $total_bulan_ini = DB::table('tbl_responden')
-                ->whereBetween('created_at', [
+                ->whereBetween(DB::raw('DATE(created_at)'), [
                     date('Y-m') . '-01',
                     date('Y-m-d')
                 ])

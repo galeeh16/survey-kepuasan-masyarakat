@@ -78,7 +78,7 @@ final class KuesionerService implements KuesionerContract
                 $from = date('Y-m-d', strtotime(request('date_from')));
                 $to = date('Y-m-d', strtotime(request('date_to')));
 
-                return $query->whereBetween('created_at', [$from, $to]);
+                return $query->whereBetween(DB::raw('DATE(created_at)'), [$from, $to]);
             })
             ->paginate($length)
             ->toArray();
@@ -134,7 +134,7 @@ final class KuesionerService implements KuesionerContract
             $date_to_format = date('Y-m-d', strtotime($date_to));
 
             $query .= " 
-                AND a.created_at BETWEEN '$date_from_format' AND '$date_to_format'
+                AND DATE(a.created_at) BETWEEN '$date_from_format' AND '$date_to_format'
             ";
         }
 
@@ -145,7 +145,5 @@ final class KuesionerService implements KuesionerContract
         }
 
         return DB::select($query);
-
-        // return [];
     }
 }
