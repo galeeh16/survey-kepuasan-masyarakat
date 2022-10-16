@@ -112,7 +112,7 @@ final class DashboardController extends Controller
 
         $total_bulan_sebelumnya = DB::table('tbl_responden')
                     ->whereBetween(DB::raw('DATE(created_at)'), [
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-', 
+                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01', 
                         $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
                     ->where('id_layanan', $id_layanan)
                     ->count();
