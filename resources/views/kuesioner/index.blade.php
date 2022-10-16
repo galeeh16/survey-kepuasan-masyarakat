@@ -128,11 +128,21 @@
             },
             data: respondenData + '&' + kuesionerData + '&id_layanan=' + $('#id_layanan').val(),
             success: function(response) {
-                alertSuccess(response.message);
                 $('#form-isi-data')[0].reset();
                 $('#form-isi-survey')[0].reset();
                 $("#survey-question").prop('hidden', true);
                 $('#btn-isi-survey').show();
+                Swal.fire({
+                title: '',
+                text: `Berhasil melakukan survey`,
+                icon: 'success',
+            })
+            .then(function(result) {
+                if(result.isConfirmed) {
+                    window.location.href = '{{ url('/') }}';
+                }
+            });
+                
             },
             error: function(xhr, stat, err) {
                 swal.close();
