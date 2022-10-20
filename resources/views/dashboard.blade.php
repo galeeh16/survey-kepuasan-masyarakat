@@ -267,7 +267,8 @@ function rupiah(number) {
 }
 
 async function fiterByLayanan(id) {
-    const response = await fetch(`/dashboard-filter-layanan/${id}`);
+    const url = "{{ url('/') }}" + '/' + `dashboard-filter-layanan/${id}`;
+    const response = await fetch(url);
     const json = await response.json();
     document.querySelector('#total_bulan_ini').innerHTML = json.total_bulan_ini;
     document.querySelector('#total_bulan_sebelumnya').innerHTML = json.total_bulan_sebelumnya;
@@ -367,7 +368,8 @@ var options = {
     var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 function fetchDataGraphic() {
-    fetch(`/data-grafik-bar`)
+    const url = "{{ url('/') }}" + '/' + `data-grafik-bar`;
+    fetch(url)
         .then(response => response.json())
         .then(json => {
             chart.updateSeries(json);
