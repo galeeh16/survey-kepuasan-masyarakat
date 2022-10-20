@@ -22,18 +22,26 @@ final class DashboardController extends Controller
             $thn_sebelum_1 = date('Y', strtotime('now -1 month'));
             $total_day_before = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime('now -1 month')), date('Y', strtotime('now -1 month')));
 
+            $date_from_format = $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01';
+            $date_to_format = $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before;
+
             $total_bulan_sebelumnya = DB::table('tbl_responden')
-                        ->whereBetween(DB::raw('DATE(created_at)'), [
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01', 
-                            $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                        // ->whereBetween(DB::raw('DATE(created_at)'), [
+                        //     $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01', 
+                        //     $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                        ->whereRaw("DATE(created_at) BETWEEN '$date_from_format' AND '$date_to_format'")
                         ->where('id_layanan', 1)
                         ->count();
-                        
+            
+            $bulan_ini_from = date('Y-m') . '-01';
+            $bulan_ini_to = date('Y-m-d');
+
             $total_bulan_ini = DB::table('tbl_responden')
-                    ->whereBetween(DB::raw('DATE(created_at)'), [
-                        date('Y-m') . '-01',
-                        date('Y-m-d')
-                    ])
+                    // ->whereBetween(DB::raw('DATE(created_at)'), [
+                    //     date('Y-m') . '-01',
+                    //     date('Y-m-d')
+                    // ])
+                    ->whereRaw("DATE(created_at) BETWEEN '$bulan_ini_from' AND '$bulan_ini_to'")
                     ->where('id_layanan', 1)
                     ->count();
 
@@ -73,28 +81,9 @@ final class DashboardController extends Controller
                 [
                     'name' => 'AK1',
                     'data' => [$total_ak1, $total_rekom_passport, $total_pelatihan, $total_lpk, $total_perusahaan, $total_hub_intl]
-                    // 'data' => [$total_ak1],
+
                 ],
-                // [
-                //     'name' => 'Rekom Passport',
-                //     'data' => [$total_rekom_passport],
-                // ],
-                // [
-                //     'name' => 'Total Pelatihan',
-                //     'data' => [$total_pelatihan],
-                // ],
-                // [
-                //     'name' => 'Total LPK',
-                //     'data' => [$total_lpk],
-                // ],
-                // [
-                //     'name' => 'Total Perusahaan',
-                //     'data' => [$total_perusahaan],
-                // ],
-                // [
-                //     'name' => 'Total Hubungan Industrial',
-                //     'data' => [$total_hub_intl],
-                // ],
+
             ];
             
         //     return $data_series;
@@ -110,18 +99,26 @@ final class DashboardController extends Controller
         $thn_sebelum_1 = date('Y', strtotime('now -1 month'));
         $total_day_before = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime('now -1 month')), date('Y', strtotime('now -1 month')));
 
+        $date_from_format = $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01';
+        $date_to_format = $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before;
+
         $total_bulan_sebelumnya = DB::table('tbl_responden')
-                    ->whereBetween(DB::raw('DATE(created_at)'), [
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01', 
-                        $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                    // ->whereBetween(DB::raw('DATE(created_at)'), [
+                    //     $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-01', 
+                    //     $thn_sebelum_1 . '-'. $bln_sebelum_1 . '-' .  $total_day_before])
+                    ->whereRaw("DATE(created_at) BETWEEN '$date_from_format' AND '$date_to_format'")
                     ->where('id_layanan', $id_layanan)
                     ->count();
+
+        $bulan_ini_from = date('Y-m') . '-01';
+        $bulan_ini_to = date('Y-m-d');
                     
         $total_bulan_ini = DB::table('tbl_responden')
-                ->whereBetween(DB::raw('DATE(created_at)'), [
-                    date('Y-m') . '-01',
-                    date('Y-m-d')
-                ])
+                // ->whereBetween(DB::raw('DATE(created_at)'), [
+                //     date('Y-m') . '-01',
+                //     date('Y-m-d')
+                // ])
+                ->whereRaw("DATE(created_at) BETWEEN '$bulan_ini_from' AND '$bulan_ini_to'")
                 ->where('id_layanan', $id_layanan)
                 ->count();
 

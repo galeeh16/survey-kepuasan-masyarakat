@@ -202,6 +202,7 @@
                     return xhr;
                 },
                 data: {
+                    jenis_layanan: $('#layanan').val(),
                     nama_layanan: $('#layanan').val() == '' ? 'ALL' : $('#layanan :selected').text(),
                     date_from: $('#date_from').val() == '' ? '-' : $('#date_from').val(),
                     date_to: $('#date_to').val() == '' ? '-' : $('#date_to').val(),
