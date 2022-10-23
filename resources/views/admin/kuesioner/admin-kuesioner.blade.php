@@ -60,6 +60,7 @@
                 <tr>
                     <th class="text-nowrap text-center" style="width: 50px;">No</th>
                     <th class="text-nowrap text-center">Nama</th>
+                    <th class="text-nowrap text-center">Nilai</th>
                     <th class="text-nowrap text-center">NIK</th>
                     <th class="text-nowrap text-center">No HP</th>
                     <th class="text-nowrap text-center">Layanan</th>
@@ -93,7 +94,7 @@
             serverSide: true,
             destroy: true,
             ordering: false,
-            searching: true,
+            searching: false,
             searchDelay: 500,
             deferRender: true,
             scrollX: true,
@@ -122,11 +123,10 @@
 	                return meta.row + meta.settings._iDisplayStart + 1;
                 }},
                 {data: 'nama_responden', class: 'text-nowrap'},
+                {data: 'nilai', class: 'text-nowrap'},
                 {data: 'nik', class: 'text-nowrap'},
                 {data: 'no_hp', class: 'text-nowrap'},
-                {data: 'layanan', class: 'text-nowrap', render: function(data, type, row) {
-                    return row.layanan ? row.layanan.namalayanan : '-';
-                }},
+                {data: 'namalayanan', class: 'text-nowrap'},
                 {data: 'tanggal_survey', class: 'text-nowrap', render: function(data, type, row) {
                     return dateFormat(row.created_at);
                 }},

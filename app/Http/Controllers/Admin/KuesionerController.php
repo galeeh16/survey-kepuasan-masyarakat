@@ -120,13 +120,15 @@ class KuesionerController extends Controller
         }
 
         $nama_file .= '.xlsx'; // extension
-        $tbl_layanan = DB::table('tbl_layanan')->where('id', $request->jenis_layanan)->first();
+        if ($request->jenis_layanan != null) {
+            $tbl_layanan = DB::table('tbl_layanan')->where('id', $request->jenis_layanan)->first();
+        }
 
         return Excel::download(new ExportExcelFromView(
             'admin.kuesioner.excel.result',
             [
                 'respondens' => $respondens,
-                'nama_layanan' => $tbl_layanan->namalayanan . ' / ' . $tbl_layanan->deskripsi,
+                'nama_layanan' => $request->jenis_layanan != null ? $tbl_layanan->namalayanan . ' / ' . $tbl_layanan->deskripsi : 'ALL',
                 'date_from' => $request->date_from,
                 'date_to' => $request->date_to,
                 'total_responden' => count($respondens)

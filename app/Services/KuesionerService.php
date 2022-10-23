@@ -63,25 +63,89 @@ final class KuesionerService implements KuesionerContract
 
     public function getListPagination()
     {
-        $length = request('length') ? intval(request('length')) : 10;
+        // $length = request('length') ? intval(request('length')) : 10;
 
-        return Responden::with(['layanan'])
-            ->when(request('search') && request('search') != '', function($query) {
-                return $query->where(DB::raw('lower(nama_responden)'), 'like', '%'. strtolower(request('search')) .'%')
-                            ->orWhere('nik', 'like', '%'. request('search') .'%')
-                            ->orWhere('no_hp', 'like', '%'. request('search') .'%');
-            })
-            ->when(request('layanan') && request('layanan') != '', function($query) {
-                return $query->where('id_layanan', request('layanan'));
-            })
-            ->when(request('date_from') && request('date_to'), function($query) {
-                $from = date('Y-m-d', strtotime(request('date_from')));
-                $to = date('Y-m-d', strtotime(request('date_to')));
+        // return Responden::with(['layanan'])
+        //     ->when(request('search') && request('search') != '', function($query) {
+        //         return $query->where(DB::raw('lower(nama_responden)'), 'like', '%'. strtolower(request('search')) .'%')
+        //                     ->orWhere('nik', 'like', '%'. request('search') .'%')
+        //                     ->orWhere('no_hp', 'like', '%'. request('search') .'%');
+        //     })
+        //     ->when(request('layanan') && request('layanan') != '', function($query) {
+        //         return $query->where('id_layanan', request('layanan'));
+        //     })
+        //     ->when(request('date_from') && request('date_to'), function($query) {
+        //         $from = date('Y-m-d', strtotime(request('date_from')));
+        //         $to = date('Y-m-d', strtotime(request('date_to')));
 
-                return $query->whereBetween(DB::raw('DATE(created_at)'), [$from, $to]);
-            })
-            ->paginate($length)
-            ->toArray();
+        //         return $query->whereBetween(DB::raw('DATE(created_at)'), [$from, $to]);
+        //     })
+        //     ->paginate($length)
+        //     ->toArray();
+
+        $date_from = request()->date_from ? date('Y-m-d', strtotime(str_replace('/', '-', request()->date_from))) : null;
+        $date_to = request()->date_to ? date('Y-m-d', strtotime(str_replace('/', '-', request()->date_to))) : null;
+        $search = request()->search;
+        $layanan = request()->layanan;
+        $limit = request('length') ? intval(request('length')) : 10; // param => length 
+        $offset = request('start') ? intval(request('start')) : 0; // param => start 
+
+        $query = "SELECT 
+                    a.id,
+                    a.nama_responden,
+                    a.no_hp,
+                    a.nik,
+                    l.namalayanan, 
+                    AVG(c.nilai) AS avg_nilai,
+                    a.created_at,
+                    CASE 
+                        WHEN avg(c.nilai) < 2 THEN 'Sangat Buruk'
+                        WHEN avg(c.nilai) >= 2 AND avg(c.nilai) <= 2.5 THEN 'Buruk'
+                        WHEN avg(c.nilai) > 2.5 AND avg(c.nilai) < 3 THEN 'Cukup'
+                        WHEN avg(c.nilai) >= 3 AND avg(c.nilai) < 3.6 THEN 'Baik'
+                        ELSE 'Sangat Baik'
+                    END AS nilai
+                FROM tbl_responden a 
+                INNER JOIN tbl_kuesioner b ON a.id = b.id_responden
+                INNER JOIN tbl_layanan l ON l.id = a.id_layanan
+                INNER JOIN tbl_jawaban c ON b.id_jawaban = c.id 
+                WHERE true ";
+
+        // TOTAL 
+        $queryTotal = "SELECT 
+                            a.id
+                        FROM tbl_responden a 
+                        INNER JOIN tbl_kuesioner b ON a.id = b.id_responden
+                        INNER JOIN tbl_jawaban c ON b.id_jawaban = c.id 
+                        WHERE true ";
+
+        if ($date_from && $date_to) {
+            $query .= " AND DATE(a.created_at) BETWEEN '$date_from' AND '$date_to'";
+            $queryTotal .= " AND DATE(a.created_at) BETWEEN '$date_from' AND '$date_to'";
+        }
+        if ($layanan && $layanan != '') {
+            $query .= " AND a.id_layanan = $layanan";
+            $queryTotal .= " AND a.id_layanan = $layanan";
+        }
+
+        // if ($search && $search != '') {
+
+        // }
+
+        $query .= " GROUP BY a.id, a.id_layanan
+        ORDER BY avg_nilai DESC
+        LIMIT $limit OFFSET $offset";
+
+        $queryTotal .= " GROUP BY a.id";
+
+        $dataList = DB::select($query);
+        $dataTotal = DB::select($queryTotal);
+
+        return [
+            'data' => $dataList,
+            'total' => count($dataTotal),
+        ];
+        
     }
 
     public function findRespondenById($id)

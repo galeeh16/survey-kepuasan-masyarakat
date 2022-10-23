@@ -223,7 +223,7 @@
                 {data: 'no_urut', class: 'text-nowrap'},
                 {data: 'pertanyaan', class: 'text-nowrap'},
             ],
-            order: [[1, 'asc']],
+            order: [[1, 'asc']]
         }).columns.adjust();
 
     }
