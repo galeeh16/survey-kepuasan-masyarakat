@@ -87,6 +87,7 @@ final class KuesionerService implements KuesionerContract
         $date_to = request()->date_to ? date('Y-m-d', strtotime(str_replace('/', '-', request()->date_to))) : null;
         $search = request()->search;
         $layanan = request()->layanan;
+        $nilai = request()->nilai;
         $limit = request('length') ? intval(request('length')) : 10; // param => length 
         $offset = request('start') ? intval(request('start')) : 0; // param => start 
 
@@ -132,8 +133,23 @@ final class KuesionerService implements KuesionerContract
 
         // }
 
-        $query .= " GROUP BY a.id, a.id_layanan
-        ORDER BY avg_nilai DESC
+        $query .= " GROUP BY a.id, a.id_layanan ";
+        
+        if ($nilai && $nilai != '') {
+            if ($nilai === 'sangat_buruk') {
+                $query .= " HAVING avg(c.nilai) < 2 ";
+            } else if ($nilai === 'buruk') {
+                $query .= " HAVING avg(c.nilai) >= 2 AND avg(c.nilai) <= 2.5 ";
+            } else if ($nilai === 'cukup') {
+                $query .= " HAVING  avg(c.nilai) > 2.5 AND avg(c.nilai) < 3 ";
+            } else if ($nilai === 'baik') {
+                $query .= " HAVING avg(c.nilai) >= 3 AND avg(c.nilai) < 3.6 ";
+            } else {
+                $query .= " HAVING avg(c.nilai) > 3.6";
+            }
+        }
+
+        $query .= " ORDER BY avg_nilai DESC
         LIMIT $limit OFFSET $offset";
 
         $queryTotal .= " GROUP BY a.id";

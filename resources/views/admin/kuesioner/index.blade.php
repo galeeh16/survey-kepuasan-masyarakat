@@ -26,7 +26,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="col-form-label">Tanggal Survey</label>
                         <div class="d-flex align-items-center">
                             <div class="position-relative">
@@ -43,6 +43,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Nilai</label>
+                        <select name="nilai" id="nilai" class="form-select">
+                            <option value="">ALL</option>
+                            <option value="sangat_baik">Sangat Baik</option>
+                            <option value="baik">Baik</option>
+                            <option value="cukup">Cukup</option>
+                            <option value="buruk">Buruk</option>
+                            <option value="sangat_buruk">Sangat Buruk</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Filter</button>
                 </div>
@@ -125,6 +136,7 @@
                         layanan: $('#layanan').val(),
                         date_from: $('#date_from').val(),
                         date_to: $('#date_to').val(),
+                        nilai: $('#nilai').val()
                     }
                 }
             },
@@ -207,6 +219,8 @@
                     nama_layanan: $('#layanan').val() == '' ? 'ALL' : $('#layanan :selected').text(),
                     date_from: $('#date_from').val() == '' ? '-' : $('#date_from').val(),
                     date_to: $('#date_to').val() == '' ? '-' : $('#date_to').val(),
+                    nilai: $('#nilai').val(),
+                    nilai_text: $('#nilai :selected').text(),
                 },
                 success: function(data, status, xhr) {
                     swal.close();
