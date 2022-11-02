@@ -133,7 +133,7 @@ final class KuesionerService implements KuesionerContract
 
         // }
 
-        $query .= " GROUP BY a.id, a.id_layanan, a.nama_responden, a.no_hp, a.nik, l.namalayanan, nilai";
+        $query .= " GROUP BY a.id, a.id_layanan, a.nama_responden, a.no_hp, a.nik, l.namalayanan, a.created_at, nilai";
         
         if ($nilai && $nilai != '') {
             if ($nilai === 'sangat_buruk') {
